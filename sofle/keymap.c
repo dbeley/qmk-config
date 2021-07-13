@@ -171,6 +171,8 @@ static void print_logo_narrow(void) {
     oled_write(" wpm", false);
 }
 
+bool shift_held = false;
+
 /* KEYBOARD PET START */
 
 /* settings */
@@ -609,6 +611,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         /* KEYBOARD PET STATUS START */
         case KC_LSFT:
         case KC_RSFT:
+        	shift_held = record->event.pressed;
             if (record->event.pressed) {
                 isBarking = true;
             } else {
@@ -641,15 +644,31 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         if (clockwise) {
-            tap_code(KC_VOLU);
+        	if (shift_held) {
+            	tap_code(KC_MNXT);
+        	} else {
+            	tap_code(KC_VOLU);
+        	}
         } else {
-            tap_code(KC_VOLD);
+        	if (shift_held) {
+            	tap_code(KC_MPRV);
+        	} else {
+            	tap_code(KC_VOLD);
+        	}
         }
     } else if (index == 1) {
         if (clockwise) {
-            tap_code(KC_WH_D);
+        	if (shift_held) {
+            	tap_code(KC_WH_R);
+        	} else {
+            	tap_code(KC_WH_D);
+        	}
         } else {
-            tap_code(KC_WH_U);
+        	if (shift_held) {
+            	tap_code(KC_WH_L);
+        	} else {
+            	tap_code(KC_WH_U);
+        	}
         }
     }
     return true;
