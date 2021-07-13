@@ -7,6 +7,14 @@ I have several keyboards using QMK:
 - sofle: ergonomic split ortho
 - ploopyco/trackball/rev1: not a keyboard, a qmk-compatible trackball (I have the left-handed version)
 
+## Config files
+
+- ploopy : done (to test)
+- preonic : abandonned (to test)
+- sofle : luna added, todo layout (to test)
+- xd75 : refactoring done (to test)
+- ymdk_np21 : todo (to test)
+
 ## Install
 
 ### Preonic
