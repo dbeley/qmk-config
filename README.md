@@ -17,47 +17,11 @@ I have several keyboards using QMK:
 
 ## Install
 
-### Preonic
-
-```
-make preonic/rev3:default
-make preonic/rev3:default:dfu-util
-```
-
-RESET button on the bottom of the keyboard.
-
-### XD75
-
-```
-make xd75:default
-make xd75:default:flash
-```
-
-`MOD+k` to put the keyboard in bootloader mode
-
-### Sofle
-
-```
-make sofle:default
-make sofle:default:avrdude
-```
-
-Reset button when asked.
-Disconnect first half, connect the second one and repeat the process.
-
-### YMDK Macropad
-
-```
-make ymdk_np21:default
-make ymdk_np21:default:flash
-```
-
-Hold down the Top Left Key (USB on top) while plugging in the keyboard.
-
 ### Ploopy Classic Trackball
 
 ```
-make ploopyco/trackball/rev1:default:flash
+cp -r ploopy/* ~/qmk_firmware/keyboards/ploopyco/trackball/keymaps/dbeley
+qmk compile -kb ploopyco/trackball/rev1 -km dbeley
 ```
 
 Left-handed ploopy is rev1 not rev1_005
@@ -68,6 +32,59 @@ To jump to the bootloader, hold down "Button 4" (immediate right of the trackbal
 
 ```
 qmk flash -kb ploopyco/trackball/rev1 -km dbeley
+```
+
+### Preonic
+
+```
+cp -r preonic/* ~/qmk_firmware/keyboards/preonic/keymaps/dbeley
+qmk compile -kb preonic/rev3 -km dbeley
+```
+
+RESET button on the bottom of the keyboard.
+
+```
+qmk flash -kb preonic/rev3 -km dbeley
+```
+
+### Sofle
+
+```
+cp -r sofle/* ~/qmk_firmware/keyboards/sofle/keymaps/dbeley
+qmk compile -kb sofle -km dbeley
+```
+
+Reset button when asked.
+Disconnect first half, connect the second one and repeat the process.
+
+```
+qmk flash -kb sofle -km dbeley
+```
+
+### XD75
+
+```
+cp -r xd75/* ~/qmk_firmware/keyboards/xd75/keymaps/dbeley
+qmk compile -kb xd75 -km dbeley
+```
+
+`MOD+k` to put the keyboard in bootloader mode
+
+```
+qmk flash -kb xd75 -km dbeley
+```
+
+### YMDK Macropad
+
+```
+cp -r ymdk/* ~/qmk_firmware/keyboards/ymdk_np21/keymaps/dbeley
+qmk compile -kb ymdk_np21 -km dbeley
+```
+
+Hold down the Top Left Key (USB on top) while plugging in the keyboard.
+
+```
+qmk flash -kb ymdk_np21 -km dbeley
 ```
 
 ## Credits
