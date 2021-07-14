@@ -3,7 +3,7 @@ printf "##########################\n"
 printf "######### ploopy #########\n"
 printf "##########################\n"
 cp -r ploopy/* ~/qmk_firmware/keyboards/ploopyco/trackball/keymaps/dbeley
-qmk compile -kb ploopyco/trackball/rev1_005 -km dbeley
+qmk compile -kb ploopyco/trackball/rev1 -km dbeley
 printf "##########################\n"
 printf "######### preonic ########\n"
 printf "##########################\n"

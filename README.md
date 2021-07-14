@@ -57,7 +57,21 @@ Hold down the Top Left Key (USB on top) while plugging in the keyboard.
 ### Ploopy Classic Trackball
 
 ```
-make ploopyco/trackball/rev1_005:default:flash
+make ploopyco/trackball/rev1:default:flash
 ```
 
-To jump to the bootloader, hold down "Button 4" (immediate right of the trackball)
+Left-handed ploopy is rev1 not rev1_005
+
+Make sure to change the `rev1/rules.mk` configuration file to have the line `BOOTLOADER=atmel-dfu` instead of `BOOTLOADER=caterina`.
+
+To jump to the bootloader, hold down "Button 4" (immediate right of the trackball) or "Button 5" (next to Button 4) while plugging the USB cable to a computer (try both, as it's not 100% clear which button it is when you have a left-handed version).
+
+```
+qmk flash -kb ploopyco/trackball/rev1 -km dbeley
+```
+
+## Credits
+
+- https://github.com/qmk/qmk_firmware
+- https://github.com/artseyio/artsey-qmk
+- https://github.com/ploopyco/classic-trackball/wiki/Appendix-C%3A-QMK-Firmware-Programming

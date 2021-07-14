@@ -17,7 +17,7 @@
  */
 #include QMK_KEYBOARD_H
 
-#define PLOOPY_DPI_OPTIONS { 1200, 1600, 2400 }
+#define PLOOPY_DPI_OPTIONS { 400, 800, 1200, 1600, 2000, 2400 }
 #define PLOOPY_DPI_DEFAULT 1
 // safe range starts at `PLOOPY_SAFE_RANGE` instead.
 
