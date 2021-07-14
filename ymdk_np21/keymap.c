@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+--------+--------+--------|
  * | E      | A      | A      | E      |
  * |--------+--------+--------+--------|
- * |        |        |        |        |
+ * | SFT    | BCKSP  | ENTER  | SPC    |
  * '-----------------------------------'
  */
 
@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         A_BASE_I, A_BASE_T, A_BASE_T, A_BASE_I,
         A_BASE_Y, A_BASE_R, A_BASE_R, A_BASE_Y,
         A_BASE_E, A_BASE_A, A_BASE_A, A_BASE_E,
-        _______, _______, _______, _______
+        LSFT_T(KC_ESC), KC_BSPC, KC_ENT, KC_SPC
         ),
 /* LAYOUT(A_BASE_S,A_BASE_T,A_BASE_R,A_BASE_A, */
 /* A_BASE_O,A_BASE_I,A_BASE_Y,A_BASE_E), */

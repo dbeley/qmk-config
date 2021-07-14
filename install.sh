@@ -19,8 +19,8 @@ printf "######### xd75 ###########\n"
 printf "##########################\n"
 cp -r xd75/* ~/qmk_firmware/keyboards/xd75/keymaps/dbeley
 qmk compile -kb xd75 -km dbeley
-printf "################################\n"
-printf "######### ymdk macropad ########\n"
-printf "################################\n"
-cp -r ymdk/* ~/qmk_firmware/keyboards/ymdk_np21/keymaps/dbeley
+printf "############################\n"
+printf "######### ymdk_np1 #########\n"
+printf "############################\n"
+cp -r ymdk_np21/* ~/qmk_firmware/keyboards/ymdk_np21/keymaps/dbeley
 qmk compile -kb ymdk_np21 -km dbeley

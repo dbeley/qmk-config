@@ -90,5 +90,6 @@ qmk flash -kb ymdk_np21 -km dbeley
 ## Credits
 
 - https://github.com/qmk/qmk_firmware
+- https://artsey.io/
 - https://github.com/artseyio/artsey-qmk
 - https://github.com/ploopyco/classic-trackball/wiki/Appendix-C%3A-QMK-Firmware-Programming
