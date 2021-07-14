@@ -9,7 +9,7 @@ I have several keyboards using QMK:
 
 ## Config files
 
-- ploopy : done (to test)
+- ploopy : done (tested)
 - preonic : abandonned (to test)
 - sofle : luna added, todo layout (to test)
 - xd75 : refactoring done (to test)
