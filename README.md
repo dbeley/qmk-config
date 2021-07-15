@@ -57,6 +57,19 @@ qmk compile -kb sofle -km dbeley
 Reset button when asked.
 Disconnect first half, connect the second one and repeat the process.
 
+Sofle keyboard uses QMK Firmware and support for the board is part of the main QMK repository. There’s also a basic support in QMK Configurator but there’s no default layout yet and encoders are not supported.
+
+Suggested approach is to build the firmware yourself. You should be familiar with QMK and be able to make it work on your local environment. If not, please follow the instructions in the documentation.
+
+- Make sure your QMK environment is setup.
+- Make sure halves are not connected together with TRRS cable.
+- Connect one half to USB, flash the firmware (always follow the actuall instructions in the QMK documentation! The command might look something like this: qmk flash -kb sofle/rev1 -km default). Use the reset button to reset the keyboard when you are asked to in console.
+- Connect the second half and flash it in the same way as the previous one.
+- Disconnect the USB cable. Connect both halves together with TRRS cable.
+- Connect USB cable to the left side (This can be changed, look for setting handednesss in QMK documentation).
+- Enjoy SofleKeyboard!
+
+
 ```
 qmk flash -kb sofle -km dbeley
 ```
