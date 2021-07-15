@@ -35,3 +35,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           DPI_CONFIG, _______
     )
 };
+/* LAYOUT 0 */
+/*    KC_BTN1,     DRAG_SCROLL,   TD(BCKFWD) */
+/*    TD(LT_BTN2), GESTURE */
+
+/* LAYOUT 1 */
+/*    KC_BTN3,     MISSION_CONTROL,       TD(CPYPST), */
+/*    _______,     RESET */
+
+/* TD is for the tap dance. BCKFWD does back for single click, and forward for double click. LT_BTN2 does right click for single click, and turning on the layer 1 when held. CPYPST does copy for single click, and paste for double click. I had to tweak tapping term for each key to make it work because my ring finger is much slower and less dexterous than others. GESTURE activates BetterTouchTool's feature to recognize gestures. */
