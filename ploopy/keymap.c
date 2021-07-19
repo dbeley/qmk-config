@@ -21,26 +21,29 @@
 #define PLOOPY_DPI_DEFAULT 1
 // safe range starts at `PLOOPY_SAFE_RANGE` instead.
 
+// Tap Dance declarations
+enum {
+  TD_NAV
+};
+
+// Tap Dance definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+  // Tap once for Escape, twice for Caps Lock
+  /* [TD_ESC_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_CAPS), */
+  [TD_NAV] = ACTION_TAP_DANCE_DOUBLE(KC_WBAK, KC_WFWD)
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* [0] = LAYOUT( /1* Base *1/ */
     /*     KC_BTN1, KC_BTN3, KC_BTN2, */
     /*       KC_BTN4, KC_BTN5 */
     /* ), */
     [0] = LAYOUT( /* Base */
-        KC_BTN1, KC_BTN3, KC_BTN2,
-          KC_BTN4, LT(1, KC_BTN5)
+        KC_BTN2, KC_BTN3, KC_BTN1,
+		TD(TD_NAV), LT(1, KC_BTN5)
     ),
     [1] = LAYOUT(
-        DRAG_SCROLL, _______, _______,
+        KC_PGDN, DRAG_SCROLL, KC_PGUP,
           DPI_CONFIG, _______
     )
 };
-/* LAYOUT 0 */
-/*    KC_BTN1,     DRAG_SCROLL,   TD(BCKFWD) */
-/*    TD(LT_BTN2), GESTURE */
-
-/* LAYOUT 1 */
-/*    KC_BTN3,     MISSION_CONTROL,       TD(CPYPST), */
-/*    _______,     RESET */
-
-/* TD is for the tap dance. BCKFWD does back for single click, and forward for double click. LT_BTN2 does right click for single click, and turning on the layer 1 when held. CPYPST does copy for single click, and paste for double click. I had to tweak tapping term for each key to make it work because my ring finger is much slower and less dexterous than others. GESTURE activates BetterTouchTool's feature to recognize gestures. */
