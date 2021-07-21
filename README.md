@@ -17,41 +17,53 @@ Some config files for the following QMK-compatible devices:
 
 ## Install
 
+You can either install the `qmk` utility or use qmk from source.
+
+From source:
+```
+git clone https://github.com/qmk/qmk_firmware
+make git-submodule
+```
+
+The YMDK macropad will need a custom fork of qmk in order to use my own keymap. Instructions are available in the [artseyio/artsey-qmk](https://github.com/artseyio/artsey-qmk) repository.
+
 ### Ploopy Classic Trackball
 
 ```
 cp -r ploopy/* ~/qmk_firmware/keyboards/ploopyco/trackball/keymaps/dbeley
-qmk compile -kb ploopyco/trackball/rev1 -km dbeley
 ```
 
-Left-handed ploopy is rev1 not rev1_005.
+Flashing QMK on a left-handed ploopy is a bit different than flashing it on a right-handed one.
 
-Make sure to change the `rev1/rules.mk` configuration file to have the line `BOOTLOADER=atmel-dfu` instead of `BOOTLOADER=caterina`.
+- left-handed ploopy is rev1 not rev1_005
+- edit `rev1/rules.mk` to have the line `BOOTLOADER=atmel-dfu` instead of `BOOTLOADER=caterina`
 
 To jump to the bootloader, hold down "Button 4" (immediate right of the trackball) or "Button 5" (next to Button 4) while plugging the USB cable to a computer (try both, as it's not 100% clear which button it is when you have a left-handed version).
 
 ```
 qmk flash -kb ploopyco/trackball/rev1 -km dbeley
+# or
+make ploopyco/trackball/rev1:dbeley:flash
 ```
 
 ### Preonic
 
 ```
 cp -r preonic/* ~/qmk_firmware/keyboards/preonic/keymaps/dbeley
-qmk compile -kb preonic/rev3 -km dbeley
 ```
 
 RESET button on the bottom of the keyboard.
 
 ```
 qmk flash -kb preonic/rev3 -km dbeley
+# or
+make preonic/rev3:dbeley:dfu-util
 ```
 
 ### Sofle
 
 ```
 cp -r sofle/* ~/qmk_firmware/keyboards/sofle/keymaps/dbeley
-qmk compile -kb sofle -km dbeley
 ```
 
 Press Reset button when asked.
@@ -66,32 +78,36 @@ Disconnect first half, connect the second one and repeat the process.
 
 ```
 qmk flash -kb sofle -km dbeley
+# or
+make sofle:dbeley:avrdude
 ```
 
 ### XD75
 
 ```
 cp -r xd75/* ~/qmk_firmware/keyboards/xd75/keymaps/dbeley
-qmk compile -kb xd75 -km dbeley
 ```
 
 `MOD+k` to put the keyboard in bootloader mode
 
 ```
 qmk flash -kb xd75 -km dbeley
+# or
+make xd75:dbeley:flash
 ```
 
 ### YMDK Macropad
 
 ```
 cp -r ymdk/* ~/qmk_firmware/keyboards/ymdk_np21/keymaps/dbeley
-qmk compile -kb ymdk_np21 -km dbeley
 ```
 
 Hold down the Top Left Key (USB on top) while plugging in the keyboard.
 
 ```
 qmk flash -kb ymdk_np21 -km dbeley
+# or
+make ymdk_np21:dbeley:flash
 ```
 
 ## Credits

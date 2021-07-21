@@ -19,31 +19,89 @@
 
 #define PLOOPY_DPI_OPTIONS { 400, 800, 1200, 1600, 2000, 2400 }
 #define PLOOPY_DPI_DEFAULT 1
-// safe range starts at `PLOOPY_SAFE_RANGE` instead.
+#define PLOOPY_DRAGSCROLL_MULTIPLIER 0.5
+#define PLOOPY_DRAGSCROLL_INVERT
 
-// Tap Dance declarations
-enum {
-  TD_NAV
-};
+enum custom_keycodes {
+	NEXTTAB,
+	PREVTAB
+}
 
-// Tap Dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
-  // Tap once for Escape, twice for Caps Lock
-  /* [TD_ESC_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_CAPS), */
-  [TD_NAV] = ACTION_TAP_DANCE_DOUBLE(KC_WBAK, KC_WFWD)
-};
+/*####################################################*/
+/* Left-handed ploopy classic trackball               */
+/*####################################################*/
+/*                                                    */
+/* Layout 0                                           */
+/*                                                    */
+/*     .-------.      .-------.    .-----------.      */
+/*    / \_ LAY1 \    /         \  /      /      \     */
+/*   |    \_BTN3 \  |  BALL    | /      /        \    */
+/*   \      \     \ \         / /   .------.     |    */
+/*    \ LAY2 \     \-'-------'-/   | BTN3  |    /     */
+/*     \ BTN5 \    /          /    '------'    /      */
+/*      '-----'---'          /  BTN1 / BTN2   /       */
+/*                          '-------'--------'        */
+/*                                                    */
+/*####################################################*/
+/*                                                    */
+/* Layout 1                                           */
+/*                                                    */
+/*     .-------.      .-------.    .-----------.      */
+/*    / \_ #### \    /         \  /      /      \     */
+/*   |    \_     \  |  BALL    | /      /        \    */
+/*   \      \     \ \         / /   .------.     |    */
+/*    \ DPI  \     \-'-------'-/   | DRSCR |    /     */
+/*     \      \    /          /    '------'    /      */
+/*      '-----'---'          /  PGUP / PGDWN  /       */
+/*                          '-------'--------'        */
+/*                                                    */
+/*####################################################*/
+/*                                                    */
+/* Layout 2                                           */
+/*                                                    */
+/*     .-------.      .-------.    .-----------.      */
+/*    / \_ DRSCR\    /         \  /      /      \     */
+/*   |    \_     \  |  BALL    | /      /        \    */
+/*   \      \     \ \         / /   .------.     |    */
+/*    \ #### \     \-'-------'-/   | DRSCR |    /     */
+/*     \      \    /          /    '------'    /      */
+/*      '-----'---'          / NXTAB / PRTAB  /       */
+/*                          '-------'--------'        */
+/*                                                    */
+/*####################################################*/
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /* [0] = LAYOUT( /1* Base *1/ */
-    /*     KC_BTN1, KC_BTN3, KC_BTN2, */
-    /*       KC_BTN4, KC_BTN5 */
-    /* ), */
     [0] = LAYOUT( /* Base */
         KC_BTN2, KC_BTN3, KC_BTN1,
-		TD(TD_NAV), LT(1, KC_BTN5)
+		LT(1, KC_BTN3), LT(2, KC_BTN5)
     ),
     [1] = LAYOUT(
         KC_PGDN, DRAG_SCROLL, KC_PGUP,
-          DPI_CONFIG, _______
+        _______, DPI_CONFIG
+    ),
+    [2] = LAYOUT(
+        NEXTTAB, DRAG_SCROLL, PREVTAB,
+        DRAG_SCROLL, _______
     )
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    case NEXTTAB:
+        if (record->event.pressed) {
+            // when keycode QMKURL is pressed
+            SEND_STRING(SS_DOWN(X_LCTL)SS_TAP(X_TAB)SS_UP(X_LCTL));
+        } else {
+            // when keycode QMKURL is released
+        }
+    case PREVTAB:
+        if (record->event.pressed) {
+            // when keycode QMKURL is pressed
+            SEND_STRING(SS_DOWN(X_LCTL)SS_DOWN(X_LSFT)SS_TAP(X_TAB)SS_UP(X_LSFT)SS_UP(X_LCTL));
+        } else {
+            // when keycode QMKURL is released
+        }
+        break;
+    }
+    return true;
 };
