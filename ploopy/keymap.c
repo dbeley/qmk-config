@@ -22,37 +22,37 @@
 #define PLOOPY_DRAGSCROLL_MULTIPLIER 0.5
 #define PLOOPY_DRAGSCROLL_INVERT
 
-enum custom_keycodes {
-	NEXTTAB,
-	PREVTAB
-};
+/* enum custom_keycodes { */
+/* 	NEXTTAB, */
+/* 	PREVTAB */
+/* }; */
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-    case PREVTAB:
-        if (record->event.pressed) {
-            // when keycode PREVTAB is pressed
-            register_code(KC_LCTL);
-            tap_code(KC_PGUP);
-            unregister_code(KC_LCTL);
-        } else {
-            // when keycode PREVTAB is released
-        }
-        break;
+/* bool process_record_user(uint16_t keycode, keyrecord_t *record) { */
+/*     switch (keycode) { */
+/*     case PREVTAB: */
+/*         if (record->event.pressed) { */
+/*             // when keycode PREVTAB is pressed */
+/*             register_code(KC_LCTL); */
+/*             tap_code(KC_PGUP); */
+/*             unregister_code(KC_LCTL); */
+/*         } else { */
+/*             // when keycode PREVTAB is released */
+/*         } */
+/*         break; */
 
-    case NEXTTAB:
-        if (record->event.pressed) {
-            // when keycode NEXTTAB is pressed
-            register_code(KC_LCTL);
-            tap_code(KC_PGDN);
-            unregister_code(KC_LCTL);
-        } else {
-            // when keycode NEXTTAB is released
-        }
-        break;
-    }
-    return true;
-};
+/*     case NEXTTAB: */
+/*         if (record->event.pressed) { */
+/*             // when keycode NEXTTAB is pressed */
+/*             register_code(KC_LCTL); */
+/*             tap_code(KC_PGDN); */
+/*             unregister_code(KC_LCTL); */
+/*         } else { */
+/*             // when keycode NEXTTAB is released */
+/*         } */
+/*         break; */
+/*     } */
+/*     return true; */
+/* }; */
 
 /*####################################################*/
 /* Left-handed ploopy classic trackball               */
@@ -60,40 +60,40 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 /*                                                    */
 /* Layout 0                                           */
 /*                                                    */
-/*                 .-------.    .---------.           */
-/*    ._________. /         \  /      /    \          */
-/*   /LAY2/LAY1/ |  BALL    | /      /      \         */
-/*   \BTN5\BTN3\ \         / /  .------.    |         */
-/*    \    \    \ '-------' /  | BTN3  |   /          */
-/*     \    \    \         /   '------'   /           */
-/*      '--------'        / BTN1 / BTN2  /            */
-/*                       '------'--------'            */
+/*                 .-------.     .---------.          */
+/*    .---------. /         \   /      /    \         */
+/*   /LAY2/LAY1/ (   BALL    ) /      /      \        */
+/*   \    \    \  \         / /  .------.    |        */
+/*    \    \    \  '-------' /  | BTN3  |   /         */
+/*     \    \    \          /   '------'   /          */
+/*      '--------'         / BTN1 / BTN2  /           */
+/*                        '------'-------'            */
 /*                                                    */
 /*####################################################*/
 /*                                                    */
 /* Layout 1                                           */
 /*                                                    */
-/*                 .-------.    .---------.           */
-/*    ._________. /         \  /      /    \          */
-/*   /DPI /####/ |  BALL    | /      /      \         */
-/*   \    \    \ \         / /  .------.    |         */
-/*    \    \    \ '-------' /  | DRSCR |   /          */
-/*     \    \    \         /   '------'   /           */
-/*      '--------'        / PGUP / PGDWN /            */
-/*                       '------'--------'            */
+/*                 .-------.     .---------.          */
+/*    .---------. /         \   /      /    \         */
+/*   /DPI /####/ (   BALL    ) /      /      \        */
+/*   \    \    \  \         / /  .------.    |        */
+/*    \    \    \  '-------' /  | DRSCR |   /         */
+/*     \    \    \          /   '------'   /          */
+/*      '--------'         / PGUP / PGDWN /           */
+/*                        '------'-------'            */
 /*                                                    */
 /*####################################################*/
 /*                                                    */
 /* Layout 2                                           */
 /*                                                    */
-/*                 .-------.    .---------.           */
-/*    ._________. /         \  /      /    \          */
-/*   /####/DRSC/ |  BALL    | /      /      \         */
-/*   \    \    \ \         / /  .------.    |         */
-/*    \    \    \ '-------' /  | DRSCR |   /          */
-/*     \    \    \         /   '------'   /           */
-/*      '--------'        / NXTAB/ PRTAB /            */
-/*                       '------'--------'            */
+/*                 .-------.     .---------.          */
+/*    .---------. /         \   /      /    \         */
+/*   /####/DRSC/ (   BALL    ) /      /      \        */
+/*   \    \    \  \         / /  .------.    |        */
+/*    \    \    \  '-------' /  | DRSCR |   /         */
+/*     \    \    \          /   '------'   /          */
+/*      '--------'         / BTN3 / DRSCR /           */
+/*                        '------'-------'            */
 /*                                                    */
 /*####################################################*/
 
@@ -107,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, DPI_CONFIG
     ),
     [2] = LAYOUT(
-        NEXTTAB, DRAG_SCROLL, PREVTAB,
+        DRAG_SCROLL, DRAG_SCROLL, KC_BTN3,
         DRAG_SCROLL, _______
     )
 };
