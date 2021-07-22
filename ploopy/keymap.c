@@ -25,7 +25,34 @@
 enum custom_keycodes {
 	NEXTTAB,
 	PREVTAB
-}
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    case PREVTAB:
+        if (record->event.pressed) {
+            // when keycode PREVTAB is pressed
+            register_code(KC_LCTL);
+            tap_code(KC_PGUP);
+            unregister_code(KC_LCTL);
+        } else {
+            // when keycode PREVTAB is released
+        }
+        break;
+
+    case NEXTTAB:
+        if (record->event.pressed) {
+            // when keycode NEXTTAB is pressed
+            register_code(KC_LCTL);
+            tap_code(KC_PGDN);
+            unregister_code(KC_LCTL);
+        } else {
+            // when keycode NEXTTAB is released
+        }
+        break;
+    }
+    return true;
+};
 
 /*####################################################*/
 /* Left-handed ploopy classic trackball               */
@@ -33,47 +60,47 @@ enum custom_keycodes {
 /*                                                    */
 /* Layout 0                                           */
 /*                                                    */
-/*     .-------.      .-------.    .-----------.      */
-/*    / \_ LAY1 \    /         \  /      /      \     */
-/*   |    \_BTN3 \  |  BALL    | /      /        \    */
-/*   \      \     \ \         / /   .------.     |    */
-/*    \ LAY2 \     \-'-------'-/   | BTN3  |    /     */
-/*     \ BTN5 \    /          /    '------'    /      */
-/*      '-----'---'          /  BTN1 / BTN2   /       */
-/*                          '-------'--------'        */
+/*                 .-------.    .---------.           */
+/*    ._________. /         \  /      /    \          */
+/*   /LAY2/LAY1/ |  BALL    | /      /      \         */
+/*   \BTN5\BTN3\ \         / /  .------.    |         */
+/*    \    \    \ '-------' /  | BTN3  |   /          */
+/*     \    \    \         /   '------'   /           */
+/*      '--------'        / BTN1 / BTN2  /            */
+/*                       '------'--------'            */
 /*                                                    */
 /*####################################################*/
 /*                                                    */
 /* Layout 1                                           */
 /*                                                    */
-/*     .-------.      .-------.    .-----------.      */
-/*    / \_ #### \    /         \  /      /      \     */
-/*   |    \_     \  |  BALL    | /      /        \    */
-/*   \      \     \ \         / /   .------.     |    */
-/*    \ DPI  \     \-'-------'-/   | DRSCR |    /     */
-/*     \      \    /          /    '------'    /      */
-/*      '-----'---'          /  PGUP / PGDWN  /       */
-/*                          '-------'--------'        */
+/*                 .-------.    .---------.           */
+/*    ._________. /         \  /      /    \          */
+/*   /DPI /####/ |  BALL    | /      /      \         */
+/*   \    \    \ \         / /  .------.    |         */
+/*    \    \    \ '-------' /  | DRSCR |   /          */
+/*     \    \    \         /   '------'   /           */
+/*      '--------'        / PGUP / PGDWN /            */
+/*                       '------'--------'            */
 /*                                                    */
 /*####################################################*/
 /*                                                    */
 /* Layout 2                                           */
 /*                                                    */
-/*     .-------.      .-------.    .-----------.      */
-/*    / \_ DRSCR\    /         \  /      /      \     */
-/*   |    \_     \  |  BALL    | /      /        \    */
-/*   \      \     \ \         / /   .------.     |    */
-/*    \ #### \     \-'-------'-/   | DRSCR |    /     */
-/*     \      \    /          /    '------'    /      */
-/*      '-----'---'          / NXTAB / PRTAB  /       */
-/*                          '-------'--------'        */
+/*                 .-------.    .---------.           */
+/*    ._________. /         \  /      /    \          */
+/*   /####/DRSC/ |  BALL    | /      /      \         */
+/*   \    \    \ \         / /  .------.    |         */
+/*    \    \    \ '-------' /  | DRSCR |   /          */
+/*     \    \    \         /   '------'   /           */
+/*      '--------'        / NXTAB/ PRTAB /            */
+/*                       '------'--------'            */
 /*                                                    */
 /*####################################################*/
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT( /* Base */
         KC_BTN2, KC_BTN3, KC_BTN1,
-		LT(1, KC_BTN3), LT(2, KC_BTN5)
+		LT(1, _______), LT(2, _______)
     ),
     [1] = LAYOUT(
         KC_PGDN, DRAG_SCROLL, KC_PGUP,
@@ -83,25 +110,4 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         NEXTTAB, DRAG_SCROLL, PREVTAB,
         DRAG_SCROLL, _______
     )
-};
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-    case NEXTTAB:
-        if (record->event.pressed) {
-            // when keycode QMKURL is pressed
-            SEND_STRING(SS_DOWN(X_LCTL)SS_TAP(X_TAB)SS_UP(X_LCTL));
-        } else {
-            // when keycode QMKURL is released
-        }
-    case PREVTAB:
-        if (record->event.pressed) {
-            // when keycode QMKURL is pressed
-            SEND_STRING(SS_DOWN(X_LCTL)SS_DOWN(X_LSFT)SS_TAP(X_TAB)SS_UP(X_LSFT)SS_UP(X_LCTL));
-        } else {
-            // when keycode QMKURL is released
-        }
-        break;
-    }
-    return true;
 };
