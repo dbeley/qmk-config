@@ -24,8 +24,8 @@ mkdir -p ~/qmk_firmware/keyboards/xd75/keymaps/dbeley
 cp -r xd75/* ~/qmk_firmware/keyboards/xd75/keymaps/dbeley
 # qmk compile -kb xd75 -km dbeley
 printf "##########################\n"
-printf "######### ymdk_np1 #######\n"
+printf "######### ymdk_np21 ######\n"
 printf "##########################\n"
-mkdir -p ~/Documents/qmk_firmware/keyboards/ymdk_np21/keymaps/dbeley
-cp -r ymdk_np21/* ~/Documents/qmk_firmware/keyboards/ymdk_np21/keymaps/dbeley
+mkdir -p ~/Documents/qmk_firmware_ymdk_np21/keyboards/ymdk_np21/keymaps/dbeley
+cp -r ymdk_np21/* ~/Documents/qmk_firmware_ymdk_np21/keyboards/ymdk_np21/keymaps/dbeley
 # qmk compile -kb ymdk_np21 -km dbeley

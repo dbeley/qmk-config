@@ -50,44 +50,61 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | SFT    | BCKSP  | ENTER  | SPC    |
  * '-----------------------------------'
  */
-[FROG] = LAYOUT_ortho_6x4(
-        DF(_A_BASE), DF(FROG), DF(NUM), DF(QWERTY),
-        LT(FROG_ALT, KC_ESC), KC_U, KC_O, KC_F,
-        KC_ESC, KC_I, KC_E, KC_A,
-        KC_SPC, KC_N, KC_H, KC_R,
-        KC_SPC, KC_S, KC_T, KC_W,
-        KC_SPC, KC_Y, KC_D, KC_P
+[_FROG] = LAYOUT_ortho_6x4(
+        DF(_A_BASE), DF(_FROG), DF(_NUM), DF(_QWERTY),
+        LT(_FROG_ALT,KC_SPC),  KC_U, KC_O, KC_F,
+        LSFT_T(KC_ESC),        KC_I, KC_E, KC_A,
+        LCTL_T(KC_TAB),        KC_N, KC_H, KC_R,
+        LALT_T(KC_BSPC),       KC_S, KC_T, KC_W,
+        LGUI_T(KC_ENT),        KC_Y, KC_D, KC_P
         ),
 
-[FROG_ALT] = LAYOUT_ortho_6x4(
-        DF(_A_BASE), DF(FROG), DF(NUM), DF(QWERTY),
-        _______, _______, KC_Q, _______,
-        KC_ESC, _______, KC_Z, _______,
-        KC_SPC, KC_K, KC_L, KC_B,
-        KC_SPC, KC_G, KC_C, KC_M,
-        KC_SPC, KC_X, KC_V, KC_J
+[_FROG_ALT] = LAYOUT_ortho_6x4(
+        DF(_A_BASE), DF(_FROG), DF(_NUM), DF(_QWERTY),
+        _______,         _______, KC_Q, _______,
+        LSFT_T(KC_BSPC), _______, KC_Z, _______,
+        LCTL_T(KC_DEL),  KC_K, KC_L, KC_B,
+        LALT_T(KC_SPC),  KC_G, KC_C, KC_M,
+        LGUI_T(KC_SPC),  KC_X, KC_V, KC_J
         ),
 
-[NUM] = LAYOUT_ortho_6x4(
-        DF(_A_BASE), DF(FROG), DF(NUM), DF(QWERTY),
+[_NUM] = LAYOUT_ortho_6x4(
+        DF(_A_BASE), DF(_FROG), DF(_NUM), DF(_QWERTY),
         KC_NLCK, KC_PSLS, KC_PAST, KC_BSPC,
-        KC_P7, KC_P8, KC_P9, KC_PMNS,
-        KC_P4, KC_P5, KC_P6, KC_PPLS,
-        KC_P1, KC_P2, KC_P3, KC_PEQL,
-        KC_P0, KC_PCMM, KC_PDOT, KC_PENT
+        KC_P7,   KC_P8,   KC_P9,   KC_PMNS,
+        KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
+        KC_P1,   KC_P2,   KC_P3,   KC_PEQL,
+        KC_P0,   KC_PCMM, KC_PDOT, KC_PENT
         ),
 
-[QWERTY] = LAYOUT_ortho_6x4(
-        DF(_A_BASE), DF(FROG), DF(NUM), DF(QWERTY),
-        _______, _______, _______, _______,
-        _______, _______, KC_W, _______,
-        _______, KC_A, KC_S, KC_D,
-        _______, _______, _______, _______,
-        _______, _______, _______, _______
+/* [_QWERTY] = LAYOUT_ortho_6x4( */
+/*         DF(_A_BASE), DF(FROG), DF(NUM), DF(QWERTY), */
+/*         KC_1,    KC_2, KC_3, KC_4, */
+/*         KC_ESC,  KC_Q, KC_W, KC_E, */
+/*         KC_LSFT, KC_A, KC_S, KC_D, */
+/*         KC_LCTL, KC_Z, KC_X, KC_C, */
+/*         KC_SPC,  KC_R, KC_F, KC_V */
+/*         ), */
+[_QWERTY] = LAYOUT_ortho_6x4(
+        DF(_A_BASE), DF(_FROG), DF(_NUM), DF(_QWERTY),
+        LT(_QWERTY_MIRRORED, KC_ESC),    KC_Z, KC_A, KC_Q,
+        LSFT_T(KC_ESC),  KC_X, KC_S, KC_W,
+        LCTL_T(KC_TAB),  KC_C, KC_D, KC_E,
+        LALT_T(KC_BSPC), KC_V, KC_F, KC_R,
+        LGUI_T(KC_ENT),  KC_B, KC_G, KC_T
+        ),
+
+[_QWERTY_MIRRORED] = LAYOUT_ortho_6x4(
+        DF(_A_BASE), DF(_FROG), DF(_NUM), DF(_QWERTY),
+        _______,         KC_N,    KC_H,    KC_Y,
+        LSFT_T(KC_BSPC), KC_M,    KC_J,    KC_U,
+        LCTL_T(KC_DEL),  KC_COMM, KC_K,    KC_I,
+        LALT_T(KC_SPC),  KC_DOT,  KC_L,    KC_O,
+        LGUI_T(KC_SPC),  KC_SLSH, KC_SCLN, KC_P
         ),
 
 [_A_BASE] = LAYOUT_ortho_6x4(
-        DF(_A_BASE), DF(FROG), DF(NUM), DF(QWERTY),
+        DF(_A_BASE), DF(_FROG), DF(_NUM), DF(_QWERTY),
         A_BASE_O, A_BASE_S, A_BASE_S, A_BASE_O,
         A_BASE_I, A_BASE_T, A_BASE_T, A_BASE_I,
         A_BASE_Y, A_BASE_R, A_BASE_R, A_BASE_Y,

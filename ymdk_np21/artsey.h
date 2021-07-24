@@ -11,10 +11,11 @@ enum layers {
   _A_NAV,
   _A_MOU,
   _A_CUSTOM,
-  FROG,
-  FROG_ALT,
-  NUM,
-  QWERTY
+  _FROG,
+  _FROG_ALT,
+  _NUM,
+  _QWERTY,
+  _QWERTY_MIRRORED
 };
 
 enum custom_keycodes {
