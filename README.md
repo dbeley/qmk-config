@@ -7,14 +7,6 @@ Some config files for the following QMK-compatible devices:
 - sofle: ergonomic split ortho
 - ploopyco/trackball/rev1: trackball (I have the left-handed version)
 
-## TODO
-
-- ploopy : done (tested)
-- preonic : abandonned (to test)
-- sofle : luna added, todo layout (to test)
-- xd75 : refactoring done (tested)
-- ymdk_np21 : todo (to test)
-
 ## Install
 
 You can either install the `qmk` utility or use qmk from source.
