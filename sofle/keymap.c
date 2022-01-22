@@ -44,7 +44,7 @@ KC_GRV,         KC_1, KC_2, KC_3, KC_4, KC_5,                           KC_6,  K
 LGUI_T(KC_TAB), KC_Q, KC_W, KC_E, KC_R, KC_T,                           KC_Y,  KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC_DEL, \
 LCTL_T(KC_ESC), KC_A, KC_S, KC_D, KC_F, KC_G,                           KC_H,  KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT, \
 LSFT_T(KC_ESC), KC_Z, KC_X, KC_C, KC_V, KC_B, KC_MUTE,          XXXXXXX,KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ESC), \
-      KC_LGUI, KC_LALT, KC_LCTRL, LSFT_T(KC_SPC), KC_LOWER,    KC_RAISE, RSFT_T(KC_SPC), KC_RCTRL, KC_RALT, KC_RGUI \
+      KC_LGUI, KC_LALT, KC_LCTRL, KC_SPC, KC_LOWER,    KC_RAISE, KC_SPC, KC_RCTRL, KC_RALT, KC_RGUI \
 ),
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
