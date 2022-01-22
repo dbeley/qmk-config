@@ -79,10 +79,10 @@
 ## Features
 
 - QWERTY default layout
-- Home rows modifiers
+- Adjust layer (Lower + Raise)
+- Home rows modifiers on Lower/Raise layers
 - Gaming mode (left-handed)
 - Mouse control + arrows
-- OLED shows WPM and current layer
-- Both OLED screens shows the same thing
+- Both OLED screens shows WPM and current layer
 - Left encoder controls volume up/down/mute. Right encoder mouse wheel up/down.
 - Luna dog
