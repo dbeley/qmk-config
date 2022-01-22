@@ -19,7 +19,6 @@ enum custom_keycodes {
     KC_LSTRT,
     KC_LEND,
     KC_DLINE,
-    KC_BSPC_DEL
 };
 
 
@@ -41,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_QWERTY] = LAYOUT( \
 KC_GRV,         KC_1, KC_2, KC_3, KC_4, KC_5,                           KC_6,  KC_7,  KC_8,    KC_9,    KC_0,    KC_QUOT, \
-LGUI_T(KC_TAB), KC_Q, KC_W, KC_E, KC_R, KC_T,                           KC_Y,  KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC_DEL, \
+KC_TAB,         KC_Q, KC_W, KC_E, KC_R, KC_T,                           KC_Y,  KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC, \
 LCTL_T(KC_ESC), KC_A, KC_S, KC_D, KC_F, KC_G,                           KC_H,  KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT, \
 LSFT_T(KC_ESC), KC_Z, KC_X, KC_C, KC_V, KC_B, KC_MUTE,          XXXXXXX,KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ESC), \
       KC_LGUI, KC_LALT, KC_LCTRL, KC_SPC, KC_LOWER,    KC_RAISE, KC_SPC, KC_RCTRL, KC_RALT, KC_RGUI \
@@ -50,7 +49,7 @@ LSFT_T(KC_ESC), KC_Z, KC_X, KC_C, KC_V, KC_B, KC_MUTE,          XXXXXXX,KC_N,  K
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |  F1  |  F2  |  F3  |  F4  |  F4  |  F6  |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | HOME | END  | RALT |      | DEL  | BSPC |                    |      |      |      |      |      |      |
+ * | HOME | END  | RALT | ESC  | DEL  | BSPC |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | PGUP | LGUI | LALT | LSFT | LCTL | ENT  |-------.    ,-------|      |      |      |      |      |      |
  * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
@@ -62,8 +61,8 @@ LSFT_T(KC_ESC), KC_Z, KC_X, KC_C, KC_V, KC_B, KC_MUTE,          XXXXXXX,KC_N,  K
  */
 [_LOWER] = LAYOUT( \
 KC_F1, KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                              _______, _______, _______, _______, _______, _______, \
-KC_HOME,KC_END,RALT_T(KC_ESC),XXXXXXX,KC_DEL,KC_BSPC_DEL,                      _______, _______, _______, _______, _______, _______, \
-KC_PGUP,LGUI_T(KC_TAB),LALT_T(KC_ESC),LSFT_T(KC_ESC),LCTL_T(KC_ESC),KC_ENT,    _______, _______, _______, _______, _______, _______, \
+KC_HOME,KC_END,RALT_T(KC_ESC), KC_ESC,KC_DEL,KC_BSPC,                      _______, _______, _______, _______, _______, _______, \
+KC_PGUP,KC_LGUI,LALT_T(KC_ESC),LSFT_T(KC_ESC),LCTL_T(KC_ESC),KC_ENT,    _______, _______, _______, _______, _______, _______, \
 KC_PGDN, KC_BSLS, KC_LBRC, KC_RBRC, KC_EQL, KC_MINS,_______,          _______, _______, _______, _______, _______, _______, _______, \
              _______, _______, _______, _______, _______,                  _______, _______, _______, _______, _______\
 ),
@@ -71,9 +70,9 @@ KC_PGDN, KC_BSLS, KC_LBRC, KC_RBRC, KC_EQL, KC_MINS,_______,          _______, _
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |  F7  |  F8  |  F9  |  F10 | F11  | F12  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    | BSPC | DEL  |      | RALT | HOME | END  |
+ * |      |      |      |      |      |      |                    | BSPC | DEL  | ESC  | RALT | HOME | END  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------.    ,-------| ENT  | RCTL | RSFT | LALT | RGUI | PGUP |
+ * |      |      |      |      |      |      |-------.    ,-------| ENT  | RCTL | RSFT | LALT | LGUI | PGUP |
  * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------|    |-------|  -   |   =  |   [  |   ]  |  \   | PGDN |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -83,8 +82,8 @@ KC_PGDN, KC_BSLS, KC_LBRC, KC_RBRC, KC_EQL, KC_MINS,_______,          _______, _
  */
 [_RAISE] = LAYOUT( \
 _______, _______, _______, _______, _______, _______,                      KC_F7,   KC_F8,   KC_F9,   KC_F10,   KC_F11,   KC_F12,\
-_______, _______, _______, _______, _______, _______,                      KC_BSPC_DEL, KC_DEL,XXXXXXX,RALT_T(KC_ESC),KC_HOME,KC_END,\
-_______, _______, _______, _______, _______, _______,                      KC_ENT,RCTL_T(KC_ESC),RSFT_T(KC_ESC),LALT_T(KC_ESC), RGUI_T(KC_TAB),KC_PGUP,\
+_______, _______, _______, _______, _______, _______,                      KC_BSPC, KC_DEL, KC_ESC,RALT_T(KC_ESC),KC_HOME,KC_END,\
+_______, _______, _______, _______, _______, _______,                      KC_ENT,RCTL_T(KC_ESC),RSFT_T(KC_ESC),LALT_T(KC_ESC), KC_LGUI,KC_PGUP,\
 _______, _______, _______, _______, _______, _______, _______,        _______, KC_MINS, KC_EQL, KC_LBRC, KC_RBRC,KC_BSLS,KC_PGDN,\
              _______, _______, _______, _______, _______,               _______, _______, _______, _______, _______ \
 ),
@@ -111,31 +110,52 @@ XXXXXXX,   XXXXXXX, XXXXXXX, KC_MS_U, KC_BTN1, KC_BTN2, _______,    _______, KC_
 ),
 /* GAMING
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |  1   |  2   |  3   |  4   |  5   |  6   |                    |   1  |  2   |  3   |  4   |  5   |  6   |
+ * |  1   |  2   |  3   |  4   |  5   |  6   |                    | Esc  |  1   |  2   |  3   |  4   |  5   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |  2   | Tab  |  Q   |  W   |  E   |  R   |                    | Tab  |  Q   |  W   |  E   |  R   |  T   |
+ * |  Esc | Tab  |  Q   |  W   |  E   |  R   |                    | Tab  |  Q   |  W   |  E   |  R   |  T   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |  3   | Enter|  A   |  S   |  D   |  F   |-------.    ,-------| Enter|  A   |  S   |  D   |  F   |  G   |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |  4   | Shft |  Z   |  X   |  C   |  V   |-------|    |-------| Shft |  Z   |  X   |  C   |  V   |  B   |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | Ctrl | Space| Alt  |  M   | / QWERT /       \ QWERT\  | Ctrl | Space| Alt  |  M   |
+ *            | Ctrl | Space| Alt  | Bcksp| / QWERT /       \ QWERT\  | Ctrl | Space| Alt  | Bcksp|
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `-----------------------------------'           '------''---------------------------'
  */
 [_GAMING] = LAYOUT( \
-KC_1, KC_2,   KC_3, KC_4, KC_5, KC_6,                           KC_1,    KC_2, KC_3, KC_4, KC_5, KC_6, \
-KC_2, KC_TAB, KC_Q, KC_W, KC_E, KC_R,                           KC_TAB,  KC_Q, KC_W, KC_E, KC_R, KC_T, \
-KC_3, KC_ENT, KC_A, KC_S, KC_D, KC_F,                           KC_ENT,  KC_A, KC_S, KC_D, KC_F, KC_G, \
-KC_4, KC_LSFT,KC_Z, KC_X, KC_C, KC_V, _______,         _______, KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, \
-      KC_LCTL,KC_SPACE,KC_LALT,KC_M,KC_QWERTY,       KC_QWERTY, KC_LCTL, KC_SPACE, KC_LALT, KC_M \
+KC_1,   KC_2,   KC_3, KC_4, KC_5, KC_6,                           KC_ESC,  KC_1, KC_2, KC_3, KC_4, KC_5, \
+KC_ESC, KC_TAB, KC_Q, KC_W, KC_E, KC_R,                           KC_TAB,  KC_Q, KC_W, KC_E, KC_R, KC_T, \
+KC_3,   KC_ENT, KC_A, KC_S, KC_D, KC_F,                           KC_ENT,  KC_A, KC_S, KC_D, KC_F, KC_G, \
+KC_4,   KC_LSFT,KC_Z, KC_X, KC_C, KC_V, _______,         _______, KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, \
+      KC_LCTL,KC_SPACE,KC_LALT,KC_BSPC,KC_QWERTY,       KC_QWERTY, KC_LCTL, KC_SPACE, KC_LALT, KC_BSPC   \
 ),
+
 };
 
 /* Smart Backspace Delete */
-
 bool            shift_held = false;
 static uint16_t held_shift = 0;
+/* settings */
+#    define MIN_WALK_SPEED      10
+#    define MIN_RUN_SPEED       40
+
+/* advanced settings */
+#    define ANIM_FRAME_DURATION 200  // how long each frame lasts in ms
+#    define ANIM_SIZE           96   // number of bytes in array. If you change sprites, minimize for adequate firmware size. max is 1024
+
+/* timers */
+uint32_t anim_timer = 0;
+uint32_t anim_sleep = 0;
+
+/* current frame */
+uint8_t current_frame = 0;
+
+/* status variables */
+int   current_wpm = 0;
+
+bool isSneaking = false;
+bool isJumping  = false;
+bool showedJump = true;
 
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
@@ -214,54 +234,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             shift_held = record->event.pressed;
             held_shift = keycode;
             break;
-        case KC_BSPC_DEL:
+        case KC_LCTL:
+        case KC_RCTL:
             if (record->event.pressed) {
-                if (shift_held) {
-                    unregister_code(held_shift);
-                    register_code(KC_DEL);
-                } else {
-                    register_code(KC_BSPC);
-                }
+                isSneaking = true;
             } else {
-                unregister_code(KC_DEL);
-                unregister_code(KC_BSPC);
-                if (shift_held) {
-                    register_code(held_shift);
-                }
+                isSneaking = false;
             }
-            return false;
+            break;
+        case KC_SPC:
+            if (record->event.pressed) {
+                isJumping  = true;
+                showedJump = false;
+            } else {
+                isJumping = false;
+            }
+            break;
     }
     return true;
 }
 
 #ifdef OLED_ENABLE
-
-/* 32 * 14 os logos */
-/* static const char PROGMEM windows_logo[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbc, 0xbc, 0xbe, 0xbe, 0x00, 0xbe, 0xbe, 0xbf, 0xbf, 0xbf, 0xbf, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x07, 0x0f, 0x0f, 0x00, 0x0f, 0x0f, 0x1f, 0x1f, 0x1f, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}; */
-
-/* KEYBOARD PET START */
-
-/* settings */
-#    define MIN_WALK_SPEED      10
-#    define MIN_RUN_SPEED       40
-
-/* advanced settings */
-#    define ANIM_FRAME_DURATION 200  // how long each frame lasts in ms
-#    define ANIM_SIZE           96   // number of bytes in array. If you change sprites, minimize for adequate firmware size. max is 1024
-
-/* timers */
-uint32_t anim_timer = 0;
-uint32_t anim_sleep = 0;
-
-/* current frame */
-uint8_t current_frame = 0;
-
-/* status variables */
-int   current_wpm = 0;
-
-bool isSneaking = false;
-bool isJumping  = false;
-bool showedJump = true;
 
 /* logic */
 static void render_luna(int LUNA_X, int LUNA_Y) {
@@ -280,10 +273,6 @@ static const char PROGMEM run[2][ANIM_SIZE] = {/* 'run1', 32x22px */
 {0x00, 0x00, 0x00, 0x00, 0xe0, 0x10, 0x08, 0x08, 0xc8, 0xb0, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x40, 0x40, 0x3c, 0x14, 0x04, 0x08, 0x90, 0x18, 0x04, 0x08, 0xb0, 0x40, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x02, 0xc4, 0xa4, 0xfc, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xc8, 0x58, 0x28, 0x2a, 0x10, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0e, 0x09, 0x04, 0x04, 0x04, 0x04, 0x02, 0x03, 0x02, 0x01, 0x01, 0x02, 0x02, 0x04, 0x08, 0x10, 0x26, 0x2b, 0x32, 0x04, 0x05, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, },
 /* 'run2', 32x22px */
 {0x00, 0x00, 0x00, 0xe0, 0x10, 0x10, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x80, 0x80, 0x78, 0x28, 0x08, 0x10, 0x20, 0x30, 0x08, 0x10, 0x20, 0x40, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x04, 0x08, 0x10, 0x11, 0xf9, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x10, 0xb0, 0x50, 0x55, 0x20, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x02, 0x0c, 0x10, 0x20, 0x28, 0x37, 0x02, 0x1e, 0x20, 0x20, 0x18, 0x0c, 0x14, 0x1e, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, }};
-/* Bark */
-static const char PROGMEM bark[2][ANIM_SIZE] = {/* 'bark1', 32x22px */
-{0x00, 0xc0, 0x20, 0x10, 0xd0, 0x30, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x80, 0x40, 0x3c, 0x14, 0x04, 0x08, 0x90, 0x18, 0x04, 0x08, 0xb0, 0x40, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x04, 0x08, 0x10, 0x11, 0xf9, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xc8, 0x48, 0x28, 0x2a, 0x10, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x02, 0x0c, 0x10, 0x20, 0x28, 0x37, 0x02, 0x02, 0x04, 0x08, 0x10, 0x26, 0x2b, 0x32, 0x04, 0x05, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, },
-{0x00, 0xe0, 0x10, 0x10, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x80, 0x40, 0x40, 0x2c, 0x14, 0x04, 0x08, 0x90, 0x18, 0x04, 0x08, 0xb0, 0x40, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x04, 0x08, 0x10, 0x11, 0xf9, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xc0, 0x48, 0x28, 0x2a, 0x10, 0x0f, 0x20, 0x4a, 0x09, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x02, 0x0c, 0x10, 0x20, 0x28, 0x37, 0x02, 0x02, 0x04, 0x08, 0x10, 0x26, 0x2b, 0x32, 0x04, 0x05, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, }};
 /* Sneak */
 static const char PROGMEM sneak[2][ANIM_SIZE] = {/* 'sneak1', 32x22px */
 {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x40, 0x40, 0x40, 0x40, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x40, 0x40, 0x80, 0x00, 0x80, 0x40, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1e, 0x21, 0xf0, 0x04, 0x02, 0x02, 0x02, 0x02, 0x03, 0x02, 0x02, 0x04, 0x04, 0x04, 0x03, 0x01, 0x00, 0x00, 0x09, 0x01, 0x80, 0x80, 0xab, 0x04, 0xf8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x1c, 0x20, 0x20, 0x3c, 0x0f, 0x11, 0x1f, 0x02, 0x06, 0x18, 0x20, 0x20, 0x38, 0x08, 0x10, 0x18, 0x04, 0x04, 0x02, 0x02, 0x01, 0x00, 0x00, 0x00, 0x00, },
@@ -297,15 +286,12 @@ static const char PROGMEM sneak[2][ANIM_SIZE] = {/* 'sneak1', 32x22px */
             /* clear */
             oled_set_cursor(LUNA_X, LUNA_Y + 2);
             oled_write("     ", false);
-
             oled_set_cursor(LUNA_X, LUNA_Y - 1);
-
             showedJump = true;
         } else {
             /* clear */
             oled_set_cursor(LUNA_X, LUNA_Y - 1);
             oled_write("     ", false);
-
             oled_set_cursor(LUNA_X, LUNA_Y);
         }
 
@@ -313,18 +299,12 @@ static const char PROGMEM sneak[2][ANIM_SIZE] = {/* 'sneak1', 32x22px */
         current_frame = (current_frame + 1) % 2;
 
         /* current status */
-        if (shift_held) {
-            oled_write_raw_P(bark[abs(1 - current_frame)], ANIM_SIZE);
-
-        } else if (isSneaking) {
+        if (isSneaking) {
             oled_write_raw_P(sneak[abs(1 - current_frame)], ANIM_SIZE);
-
         } else if (current_wpm <= MIN_WALK_SPEED) {
             oled_write_raw_P(sit[abs(1 - current_frame)], ANIM_SIZE);
-
         } else if (current_wpm <= MIN_RUN_SPEED) {
             oled_write_raw_P(walk[abs(1 - current_frame)], ANIM_SIZE);
-
         } else {
             oled_write_raw_P(run[abs(1 - current_frame)], ANIM_SIZE);
         }
@@ -369,9 +349,6 @@ static void print_status_primary(void) {
     switch (get_highest_layer(layer_state)) {
         case _QWERTY:
             oled_write("Base ", false);
-            break;
-        case _GAMING:
-            oled_write("Games", false);
             break;
         case _RAISE:
             oled_write("Raise", false);
