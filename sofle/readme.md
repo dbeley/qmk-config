@@ -17,3 +17,9 @@ Features:
 - Left encoder controls volume up/down/mute. Right encoder PGUP/PGDOWN.
 
 
+
+## TODO
+
+- gaming mode
+- mouse control
+- arrow keys
