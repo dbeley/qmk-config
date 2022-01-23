@@ -39,11 +39,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *            `-----------------------------------'           '------''---------------------------'
  */
 [_QWERTY] = LAYOUT( \
-KC_GRV,         KC_1, KC_2, KC_3, KC_4, KC_5,                           KC_6,  KC_7,  KC_8,    KC_9,    KC_0,    KC_QUOT, \
-KC_TAB,         KC_Q, KC_W, KC_E, KC_R, KC_T,                           KC_Y,  KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC, \
-LCTL_T(KC_ESC), KC_A, KC_S, KC_D, KC_F, KC_G,                           KC_H,  KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT, \
-LSFT_T(KC_ESC), KC_Z, KC_X, KC_C, KC_V, KC_B, KC_MUTE,          XXXXXXX,KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ESC), \
-      KC_LGUI, KC_LALT, KC_LCTRL, KC_SPC, KC_LOWER,    KC_RAISE, KC_SPC, KC_RCTRL, KC_RALT, KC_RGUI \
+KC_GRV,         KC_1, KC_2, KC_3, KC_4, KC_5,                           KC_6,  KC_7,  KC_8,    KC_9,    KC_0,    KC_QUOT,        \
+KC_TAB,         KC_Q, KC_W, KC_E, KC_R, KC_T,                           KC_Y,  KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC,        \
+LCTL_T(KC_ESC), KC_A, KC_S, KC_D, KC_F, KC_G,                           KC_H,  KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT,         \
+LSFT_T(KC_ESC), KC_Z, KC_X, KC_C, KC_V, KC_B, KC_MUTE,         XXXXXXX, KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ESC), \
+      KC_LGUI, KC_LALT, KC_LCTRL, KC_SPC, KC_LOWER,                     KC_RAISE, KC_SPC, KC_RCTRL, KC_RALT, KC_RGUI \
 ),
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -60,11 +60,11 @@ LSFT_T(KC_ESC), KC_Z, KC_X, KC_C, KC_V, KC_B, KC_MUTE,          XXXXXXX,KC_N,  K
  *            `-----------------------------------'           '------''---------------------------'
  */
 [_LOWER] = LAYOUT( \
-KC_F1, KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                              _______, _______, _______, _______, _______, _______, \
-KC_HOME,KC_END,RALT_T(KC_ESC), KC_ESC,KC_DEL,KC_BSPC,                      _______, _______, _______, _______, _______, _______, \
-KC_PGUP,KC_LGUI,LALT_T(KC_ESC),LSFT_T(KC_ESC),LCTL_T(KC_ESC),KC_ENT,    _______, _______, _______, _______, _______, _______, \
-KC_PGDN, KC_BSLS, KC_LBRC, KC_RBRC, KC_EQL, KC_MINS,_______,          _______, _______, _______, _______, _______, _______, _______, \
-             _______, _______, _______, _______, _______,                  _______, _______, _______, _______, _______\
+KC_F1,   KC_F2,   KC_F3,          KC_F4,          KC_F5,          KC_F6,                       _______, _______, _______, _______, _______, _______, \
+KC_HOME, KC_END,  RALT_T(KC_ESC), KC_ESC,         KC_DEL,         KC_BSPC,                     _______, _______, _______, _______, _______, _______, \
+KC_PGUP, KC_LGUI, LALT_T(KC_ESC), LSFT_T(KC_ESC), LCTL_T(KC_ESC), KC_ENT,                      _______, _______, _______, _______, _______, _______, \
+KC_PGDN, KC_BSLS, KC_LBRC,        KC_RBRC,        KC_EQL,         KC_MINS, _______,   _______, _______, _______, _______, _______, _______, _______, \
+              _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______ \
 ),
 /* RAISE
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -81,11 +81,11 @@ KC_PGDN, KC_BSLS, KC_LBRC, KC_RBRC, KC_EQL, KC_MINS,_______,          _______, _
  *            `-----------------------------------'           '------''---------------------------'
  */
 [_RAISE] = LAYOUT( \
-_______, _______, _______, _______, _______, _______,                      KC_F7,   KC_F8,   KC_F9,   KC_F10,   KC_F11,   KC_F12,\
-_______, _______, _______, _______, _______, _______,                      KC_BSPC, KC_DEL, KC_ESC,RALT_T(KC_ESC),KC_HOME,KC_END,\
-_______, _______, _______, _______, _______, _______,                      KC_ENT,RCTL_T(KC_ESC),RSFT_T(KC_ESC),LALT_T(KC_ESC), KC_LGUI,KC_PGUP,\
-_______, _______, _______, _______, _______, _______, _______,        _______, KC_MINS, KC_EQL, KC_LBRC, KC_RBRC,KC_BSLS,KC_PGDN,\
-             _______, _______, _______, _______, _______,               _______, _______, _______, _______, _______ \
+_______, _______, _______, _______, _______, _______,                          KC_F7,   KC_F8,          KC_F9,          KC_F10,         KC_F11,  KC_F12,  \
+_______, _______, _______, _______, _______, _______,                          KC_BSPC, KC_DEL,         KC_ESC,         RALT_T(KC_ESC), KC_HOME, KC_END,  \
+_______, _______, _______, _______, _______, _______,                          KC_ENT,  RCTL_T(KC_ESC), RSFT_T(KC_ESC), LALT_T(KC_ESC), KC_LGUI, KC_PGUP, \
+_______, _______, _______, _______, _______, _______, _______,        _______, KC_MINS, KC_EQL,         KC_LBRC,        KC_RBRC,        KC_BSLS, KC_PGDN, \
+         _______, _______, _______, _______, _______,                          _______, _______, _______, _______, _______ \
 ),
 /* ADJUST
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -106,28 +106,28 @@ KC_GAMING, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PSCR,                      KC_
 XXXXXXX,   XXXXXXX, KC_MUTE, KC_MPRV, KC_MNXT, KC_MPLY,                      KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, XXXXXXX, XXXXXXX,   \
 XXXXXXX,   XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,   \
 _______,   XXXXXXX, XXXXXXX, KC_MS_U, KC_BTN1, KC_BTN2, _______,    _______, KC_BTN1, KC_BTN2, KC_MS_U, XXXXXXX, XXXXXXX, _______,   \
-             KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, _______,         _______, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_R \
+           KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, _______,                      _______, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_R \
 ),
-/* GAMING
+/* GAMING left-handed
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |  1   |  2   |  3   |  4   |  5   |  6   |                    | Esc  |  1   |  2   |  3   |  4   |  5   |
+ * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |                    | Esc  |  1   |  2   |  3   |  4   |  5   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |  Esc | Tab  |  Q   |  W   |  E   |  R   |                    | Tab  |  Q   |  W   |  E   |  R   |  T   |
+ * |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |                    | Tab  |  Q   |  W   |  E   |  R   |  T   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |  3   | Enter|  A   |  S   |  D   |  F   |-------.    ,-------| Enter|  A   |  S   |  D   |  F   |  G   |
+ * |      |      | LEFT | DOWN | UP   | RIGHT|-------.    ,-------| Enter|  A   |  S   |  D   |  F   |  G   |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |  4   | Shft |  Z   |  X   |  C   |  V   |-------|    |-------| Shft |  Z   |  X   |  C   |  V   |  B   |
+ * |      |      |      | MsU  | Btn1 | Btn2 |-------|    |-------| Shft |  Z   |  X   |  C   |  V   |  B   |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | Space| Ctrl | Alt  | Bcksp| / QWERT /       \ QWERT\  | Space| Ctrl | Alt  | Bcksp|
+ *            | MsL  | MsD  | MsR  |      | / QWERT /       \ QWERT\  | Space| Ctrl | Alt  | Bcksp|
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `-----------------------------------'           '------''---------------------------'
  */
 [_GAMING] = LAYOUT( \
-KC_1,   KC_2,   KC_3, KC_4, KC_5, KC_6,                           KC_ESC,  KC_1, KC_2, KC_3, KC_4, KC_5, \
-KC_ESC, KC_TAB, KC_Q, KC_W, KC_E, KC_R,                           KC_TAB,  KC_Q, KC_W, KC_E, KC_R, KC_T, \
-KC_3,   KC_ENT, KC_A, KC_S, KC_D, KC_F,                           KC_ENT,  KC_A, KC_S, KC_D, KC_F, KC_G, \
-KC_4,   KC_LSFT,KC_Z, KC_X, KC_C, KC_V, _______,         _______, KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, \
-      KC_SPACE,KC_LCTL,KC_LALT,KC_BSPC,KC_QWERTY,       KC_QWERTY, KC_SPACE, KC_LCTL, KC_LALT, KC_BSPC   \
+KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                          KC_ESC,  KC_1, KC_2, KC_3, KC_4, KC_5, \
+KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,                         KC_TAB,  KC_Q, KC_W, KC_E, KC_R, KC_T, \
+XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,                        KC_ENT,  KC_A, KC_S, KC_D, KC_F, KC_G, \
+_______, XXXXXXX, XXXXXXX, KC_MS_U, KC_BTN1, KC_BTN2, _______,      _______, KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, \
+         KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, _______,                        KC_QWERTY, KC_SPACE, KC_LCTL, KC_LALT, KC_BSPC \
 ),
 
 };
@@ -362,7 +362,7 @@ static void print_status_primary(void) {
         default:
             oled_write("Undef", false);
     }
-    render_luna(0,9);
+    render_luna(0,12);
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_270; }
