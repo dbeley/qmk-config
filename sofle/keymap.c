@@ -105,7 +105,7 @@ _______, _______, _______, _______, _______, _______, _______,        _______, K
 KC_GAMING, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PSCR,                      KC_PSCR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_GAMING, \
 XXXXXXX,   XXXXXXX, KC_MUTE, KC_MPRV, KC_MNXT, KC_MPLY,                      KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, XXXXXXX, XXXXXXX,   \
 XXXXXXX,   XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,   \
-XXXXXXX,   XXXXXXX, XXXXXXX, KC_MS_U, KC_BTN1, KC_BTN2, _______,    _______, KC_BTN1, KC_BTN2, KC_MS_U, XXXXXXX, XXXXXXX, XXXXXXX,   \
+_______,   XXXXXXX, XXXXXXX, KC_MS_U, KC_BTN1, KC_BTN2, _______,    _______, KC_BTN1, KC_BTN2, KC_MS_U, XXXXXXX, XXXXXXX, _______,   \
              KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, _______,         _______, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_R \
 ),
 /* GAMING
@@ -118,7 +118,7 @@ XXXXXXX,   XXXXXXX, XXXXXXX, KC_MS_U, KC_BTN1, KC_BTN2, _______,    _______, KC_
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |  4   | Shft |  Z   |  X   |  C   |  V   |-------|    |-------| Shft |  Z   |  X   |  C   |  V   |  B   |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | Ctrl | Space| Alt  | Bcksp| / QWERT /       \ QWERT\  | Ctrl | Space| Alt  | Bcksp|
+ *            | Space| Ctrl | Alt  | Bcksp| / QWERT /       \ QWERT\  | Space| Ctrl | Alt  | Bcksp|
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `-----------------------------------'           '------''---------------------------'
  */
@@ -127,7 +127,7 @@ KC_1,   KC_2,   KC_3, KC_4, KC_5, KC_6,                           KC_ESC,  KC_1,
 KC_ESC, KC_TAB, KC_Q, KC_W, KC_E, KC_R,                           KC_TAB,  KC_Q, KC_W, KC_E, KC_R, KC_T, \
 KC_3,   KC_ENT, KC_A, KC_S, KC_D, KC_F,                           KC_ENT,  KC_A, KC_S, KC_D, KC_F, KC_G, \
 KC_4,   KC_LSFT,KC_Z, KC_X, KC_C, KC_V, _______,         _______, KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, \
-      KC_LCTL,KC_SPACE,KC_LALT,KC_BSPC,KC_QWERTY,       KC_QWERTY, KC_LCTL, KC_SPACE, KC_LALT, KC_BSPC   \
+      KC_SPACE,KC_LCTL,KC_LALT,KC_BSPC,KC_QWERTY,       KC_QWERTY, KC_SPACE, KC_LCTL, KC_LALT, KC_BSPC   \
 ),
 
 };
