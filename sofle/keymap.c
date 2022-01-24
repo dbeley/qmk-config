@@ -2,7 +2,6 @@
 
 enum sofle_layers {
     _QWERTY,
-    /* _GAMING, */
     _LOWER,
     _RAISE,
     _ADJUST,
@@ -11,7 +10,6 @@ enum sofle_layers {
 
 enum custom_keycodes {
     KC_QWERTY = SAFE_RANGE,
-    /* KC_GAMING, */
     KC_LOWER,
     KC_RAISE,
     KC_ADJUST,
@@ -88,9 +86,9 @@ enum custom_keycodes {
  	 * ,-----------------------------------------.                    ,-----------------------------------------.
  	 * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |                    |  F7  |  F8  |  F9  | F10  | F11  | F12  |
  	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- 	 * |GAMING|      | Mute | Prev | Next | Play |                    | Play | Prev | Next | Mute |      |GAMING|
+ 	 * |      |      | Mute | Prev | Next | Play |                    | Play | Prev | Next | Mute |      |      |
  	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- 	 * |MIRROR|      | LEFT | DOWN | UP   | RIGHT|-------.    ,-------| LEFT | DOWN | UP   | RIGHT|      |MIRROR|
+ 	 * |      |      | LEFT | DOWN | UP   | RIGHT|-------.    ,-------| LEFT | DOWN | UP   | RIGHT|      |      |
  	 * |------+------+------+------+------+------| MUTE  |    | MUTE  |------+------+------+------+------+------|
  	 * |      |      |      | MsU  | Btn1 | Btn2 |-------|    |-------| Btn1 | Btn2 | MsU  |      |      |      |
  	 * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -105,27 +103,6 @@ enum custom_keycodes {
 	_______,   XXXXXXX, XXXXXXX, KC_MS_U, KC_BTN1, KC_BTN2, _______,    _______, KC_BTN1, KC_BTN2, KC_MS_U, XXXXXXX, XXXXXXX, _______,   \
            	   KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, _______,                      _______, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_R \
 	),
-	/* GAMING left-handed
- 	 * ,-----------------------------------------.                    ,-----------------------------------------.
- 	 * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |                    | Esc  |  1   |  2   |  3   |  4   |  5   |
- 	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- 	 * |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |                    | Tab  |  Q   |  W   |  E   |  R   |  T   |
- 	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- 	 * |      |      | LEFT | DOWN | UP   | RIGHT|-------.    ,-------| Enter|  A   |  S   |  D   |  F   |  G   |
- 	 * |------+------+------+------+------+------| MUTE  |    | MUTE  |------+------+------+------+------+------|
- 	 * |      |      |      | MsU  | Btn1 | Btn2 |-------|    |-------| Shft |  Z   |  X   |  C   |  V   |  B   |
- 	 * `-----------------------------------------/       /     \      \-----------------------------------------'
- 	 *            | MsL  | MsD  | MsR  |      | / QWERT /       \ QWERT\  | Space| Ctrl | Alt  | Bcksp|
- 	 *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- 	 *            `-----------------------------------'           '------''---------------------------'
- 	 */
-	/* [_GAMING] = LAYOUT( \ */
-	/* KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                          KC_ESC,  KC_1, KC_2, KC_3, KC_4, KC_5, \ */
-	/* KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,                         KC_TAB,  KC_Q, KC_W, KC_E, KC_R, KC_T, \ */
-	/* XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,                        KC_ENT,  KC_A, KC_S, KC_D, KC_F, KC_G, \ */
-	/* _______, XXXXXXX, XXXXXXX, KC_MS_U, KC_BTN1, KC_BTN2, _______,      _______, KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, \ */
-         	 /* KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, _______,                        KC_QWERTY, KC_SPACE, KC_LCTL, KC_LALT, KC_BSPC \ */
-	/* ), */
 	/* MIRROR
  	 * ,-----------------------------------------.                    ,-----------------------------------------.
  	 * |  6   |   7  |   8  |   9  |   0  |   '  |                    |   `  |   1  |   2  |   3  |   4  |  5   |
@@ -217,11 +194,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 set_single_persistent_default_layer(_QWERTY);
             }
             return false;
-        /* case KC_GAMING: */
-        /*     if (record->event.pressed) { */
-        /*         set_single_persistent_default_layer(_GAMING); */
-        /*     } */
-        /*     return false; */
         case KC_MIRROR:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_MIRROR);
@@ -359,9 +331,6 @@ static void print_status_primary(void) {
         case _QWERTY:
             oled_write("QWRTY", false);
             break;
-        /* case _GAMING: */
-        /*     oled_write("GAMES", false); */
-        /*     break; */
         case _MIRROR:
             oled_write("MIRRO", false);
             break;
