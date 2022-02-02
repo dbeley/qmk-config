@@ -2,18 +2,20 @@
 
 enum sofle_layers {
     _QWERTY,
+    _COLEMAK,
+    _MIRROR,
     _LOWER,
     _RAISE,
     _ADJUST,
-    _MIRROR,
 };
 
 enum custom_keycodes {
     KC_QWERTY = SAFE_RANGE,
+    KC_COLEMAK,
+    KC_MIRROR,
     KC_LOWER,
     KC_RAISE,
     KC_ADJUST,
-    KC_MIRROR,
 };
 
 
@@ -39,6 +41,28 @@ enum custom_keycodes {
 	LSFT_T(KC_ESC), KC_Z, KC_X, KC_C, KC_V, KC_B, KC_MUTE,         KC_MUTE, KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ESC), \
       	  KC_LGUI,  KC_LALT, KC_LCTRL, KC_SPC, KC_LOWER,                     KC_RAISE, KC_SPC, KC_RCTRL, KC_RALT, KC_MIRROR \
 	),
+	/*
+ 	 * COLEMAK-DH
+ 	 * ,-----------------------------------------.                    ,-----------------------------------------.
+ 	 * | `    |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  | Bspc |
+ 	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ 	 * | LGUI |   Q  |   W  |   F  |   P  |   B  |                    |   J  |   L  |   U  |   Y  |   ;  |  '   |
+ 	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ 	 * | LCTR |   A  |   R  |   S  |   T  |   G  |-------.    ,-------|   M  |   N  |   E  |   I  |   O  | Enter|
+ 	 * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
+ 	 * |LShift|   Z  |   X  |   C  |   V  |   D  |-------|    |-------|   K  |   H  |   ,  |   .  |   /  |RShift|
+ 	 * `-----------------------------------------/       /     \      \-----------------------------------------'
+ 	 *            | LGUI | LAlt | LCTR |Space | /LOWER  /       \RAISE \  |Space | RCTR | RAlt | RGUI |
+ 	 *            |      |      |      |      |/       /         \      \ |      |      |      |      |
+ 	 *            `-----------------------------------'           '------''---------------------------'
+ 	 */
+	[_COLEMAK] = LAYOUT( \
+	KC_GRV,         KC_1, KC_2, KC_3, KC_4, KC_5,                           KC_6,  KC_7,  KC_8,    KC_9,    KC_0,    KC_QUOT,        \
+	LGUI_T(KC_TAB), KC_Q, KC_W, KC_F, KC_P, KC_B,                           KC_J,  KC_L,  KC_U,    KC_Y,    KC_SCLN,    KC_BSPC,        \
+	LCTL_T(KC_ESC), KC_A, KC_R, KC_S, KC_T, KC_G,                           KC_M,  KC_N,  KC_E,    KC_I,    KC_O, KC_ENT,         \
+	LSFT_T(KC_ESC), KC_Z, KC_X, KC_C, KC_V, KC_D, KC_MUTE,         KC_MUTE, KC_K,  KC_H,  KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ESC), \
+      	  KC_LGUI,  KC_LALT, KC_LCTRL, KC_SPC, KC_LOWER,                     KC_RAISE, KC_SPC, KC_RCTRL, KC_RALT, KC_RGUI \
+	),
 	/* LOWER
  	 * ,-----------------------------------------.                    ,-----------------------------------------.
  	 * |      |      | LEFT | DOWN |  UP  | RIGHT|                    |      |      |      |      |      |      |
@@ -51,7 +75,7 @@ enum custom_keycodes {
  	 * `-----------------------------------------/       /     \      \-----------------------------------------'
  	 *            |      |      |      |      | / LOWER /       \RAISE \  |      |      |      |      |
  	 *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- 	 *            `-------------a----------------------'           '------''---------------------------'
+ 	 *            `-----------------------------------'           '------''---------------------------'
  	 */
 	[_LOWER] = LAYOUT( \
 	XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,                                            _______, _______, _______, _______, _______, _______, \
@@ -85,9 +109,9 @@ enum custom_keycodes {
  	 * ,-----------------------------------------.                    ,-----------------------------------------.
  	 * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |                    |  F7  |  F8  |  F9  | F10  | F11  | F12  |
  	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- 	 * |      |      | Mute | Prev | Next | Play |                    | Play | Prev | Next | Mute |      |      |
+ 	 * |QWERTY|      | Mute | Prev | Next | Play |                    | Play | Prev | Next | Mute |      |QWERTY|
  	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- 	 * |      |      | LEFT | DOWN | UP   | RIGHT|-------.    ,-------| LEFT | DOWN | UP   | RIGHT|      |      |
+ 	 * |COLEMA|      | LEFT | DOWN | UP   | RIGHT|-------.    ,-------| LEFT | DOWN | UP   | RIGHT|      |COLEMA|
  	 * |------+------+------+------+------+------| MUTE  |    | MUTE  |------+------+------+------+------+------|
  	 * |      |      |      | MsU  | Btn1 | Btn2 |-------|    |-------| Btn1 | Btn2 | MsU  |      |      |      |
  	 * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -97,8 +121,8 @@ enum custom_keycodes {
  	 */
 	[_ADJUST] = LAYOUT( \
 	KC_F1,     KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                        KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12,   \
-	XXXXXXX,   XXXXXXX, KC_MUTE, KC_MPRV, KC_MNXT, KC_MPLY,                      KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, XXXXXXX, XXXXXXX,   \
-	XXXXXXX,   XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,   \
+	KC_QWERTY,   XXXXXXX, KC_MUTE, KC_MPRV, KC_MNXT, KC_MPLY,                      KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, XXXXXXX, KC_QWERTY,   \
+	KC_COLEMAK,   XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, KC_COLEMAK,   \
 	_______,   XXXXXXX, XXXXXXX, KC_MS_U, KC_BTN1, KC_BTN2, _______,    _______, KC_BTN1, KC_BTN2, KC_MS_U, XXXXXXX, XXXXXXX, _______,   \
            	   KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, _______,                      _______, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_R \
 	),
@@ -172,13 +196,13 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             if (shift_held) {
                 tap_code(KC_WH_R);
             } else {
-                tap_code(KC_WH_D);
+                tap_code(KC_WH_U);
             }
         } else {
             if (shift_held) {
                 tap_code(KC_WH_L);
             } else {
-                tap_code(KC_WH_U);
+                tap_code(KC_WH_D);
             }
         }
     }
@@ -191,6 +215,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_QWERTY:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_QWERTY);
+            }
+            return false;
+        case KC_COLEMAK:
+            if (record->event.pressed) {
+                set_single_persistent_default_layer(_COLEMAK);
             }
             return false;
         case KC_MIRROR:
@@ -330,8 +359,11 @@ static void print_status_primary(void) {
         case _QWERTY:
             oled_write("QWRTY", false);
             break;
+        case _COLEMAK:
+            oled_write("COLMK", false);
+            break;
         case _MIRROR:
-            oled_write("MIRRO", false);
+            oled_write("MRROR", false);
             break;
         default:
             oled_write("UNDEF", false);
@@ -669,7 +701,7 @@ void arasaka_draw(void) {
 
 bool oled_task_user(void) {
     if (current_wpm == -1) {
-    	set_current_wpm(10);
+    	set_current_wpm(0);
     }
     current_wpm   = get_current_wpm();
 
