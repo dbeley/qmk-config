@@ -30,7 +30,7 @@ Flashing QMK on a left-handed ploopy is a bit different than flashing it on a ri
 - left-handed ploopy is rev1 not rev1_005
 - edit `rev1/rules.mk` to have the line `BOOTLOADER=atmel-dfu` instead of `BOOTLOADER=caterina`
 
-To jump to the bootloader, hold down "Button 4" (immediate right of the trackball) or "Button 5" (next to Button 4) while plugging the USB cable to a computer (try both, as it's not 100% clear which button it is when you have a left-handed version).
+To jump to the bootloader, hold down "Button 4" (immediate right of the trackball, immediate left if you have a left-handed model) while plugging the USB cable to a computer.
 
 ```
 qmk flash -kb ploopyco/trackball/rev1 -km dbeley
