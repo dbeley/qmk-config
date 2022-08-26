@@ -4,7 +4,7 @@ The four top keys control the active layer. From left to right:
 - artsey
 - frogpad
 - numpad
-- qwerty
+- qwerty or qwerty gaming (check code)
 
 ## Artsey
 
@@ -114,4 +114,23 @@ Qwerty Layer                             Qwerty Mirror Layer
 | GUI   | B     | G     | T     |        | GUI   | /     | ;     | P     |
 | ESC   |       |       |       |        | ESC   |       |       |       |
 `-------------------------------'        `-------------------------------'
+```
+
+## Qwerty (gaming)
+
+```
+Qwerty gaming layer
+      ,-----------------------------------------.
+      | L_Qw | Esc  |  Q   |  W   |  E   |  R   |
+      |      |      |      |      |      |      |
+      |------+------+------+------+------+------|
+      | L_Nu | U    |  A   |  S   |  D   |  F   |
+,---- |      |      |      |      |      |      |
+| USB |------+------+------+------+------+------|
+`---- | L_Fr | Ctrl |  Z   |  X   |  C   |  V   |
+      |      |      |      |      |      |      |
+      |------+------+------+------+------+------|
+      | L_Ar | Shft | Spce |  G   |  B   |  M   |
+      |      |      |      |      |      |      |
+      `-----------------------------------------'
 ```

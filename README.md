@@ -3,7 +3,7 @@
 Some config files for the following QMK-compatible devices:
 - xd75: 15x5 ortho
 - preonic/rev3: 12x5 ortho
-- ymdk_np21: 24-keys macropad
+- ymdk/ymd21/v2: 24-keys macropad
 - sofle: ergonomic split ortho
 - ploopyco/trackball/rev1: trackball (I have the left-handed version)
 
@@ -69,7 +69,7 @@ Disconnect first half, connect the second one and repeat the process.
 - Connect USB cable to the left side (This can be changed, look for setting handednesss in QMK documentation).
 
 ```
-qmk flash -kb sofle -km dbeley
+qmk flash -kb sofle -km dbeley; qmk flash -kb sofle -km dbeley
 # or
 make sofle:dbeley:avrdude
 ```
@@ -91,15 +91,25 @@ make xd75:dbeley:flash
 ### YMDK Macropad
 
 ```
-cp -r ymdk/* ~/qmk_firmware/keyboards/ymdk_np21/keymaps/dbeley
+cp -r ymdk_np21/* ~/qmk_firmware/keyboards/ymdk/np21/keymaps/dbeley
 ```
 
 Hold down the Top Left Key (USB on top) while plugging in the keyboard.
 
 ```
-qmk flash -kb ymdk_np21 -km dbeley
+qmk flash -kb ymdk/np21 -km dbeley
 # or
-make ymdk_np21:dbeley:flash
+make ymdk/np21:dbeley:flash
+```
+
+### Cantor Remix
+
+Hold top-left key and plug USB (top-right for right part).
+
+If it doesn't work, you can also press the BOOT button below the micro-controller before plugging the board to the computer (both halves need to be disconnected from each other).
+
+```
+qmk flash -kb cantor -km manna-harbour_miryoku; qmk flash -kb cantor -km manna-harbour_miryoku
 ```
 
 ## Credits
