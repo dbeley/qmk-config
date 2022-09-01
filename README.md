@@ -109,7 +109,7 @@ Hold top-left key and plug USB (top-right for right part).
 If it doesn't work, you can also press the BOOT button below the micro-controller before plugging the board to the computer (both halves need to be disconnected from each other).
 
 ```
-qmk flash -kb cantor -km manna-harbour_miryoku; qmk flash -kb cantor -km manna-harbour_miryoku
+qmk flash -kb cantor -km manna-harbour_miryoku -e MIRYOKU_NAV=VI; qmk flash -kb cantor -km manna-harbour_miryoku -e MIRYOKU_NAV=VI
 ```
 
 ## Credits

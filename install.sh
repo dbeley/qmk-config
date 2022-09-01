@@ -29,3 +29,8 @@ printf "##########################\n"
 mkdir -p ~/qmk_firmware/keyboards/ymdk/np21/keymaps/dbeley
 cp -r ymdk_np21/* ~/qmk_firmware/keyboards/ymdk/np21/keymaps/dbeley
 # qmk compile -kb ymdk/np21 -km dbeley
+printf "##########################\n"
+printf "######### cantor miryoku #\n"
+printf "##########################\n"
+cp -r cantor-remix/* ~/qmk_firmware/users/manna-harbour_miryoku
+# qmk compile -kb cantor -km manna-harbour_miryoku
