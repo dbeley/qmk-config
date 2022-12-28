@@ -2,8 +2,7 @@
 
 enum layer_names {
     _QWERTY_GAMING,
-    _FROG,
-    _FROG_ALT,
+    _GAMING,
     _NUM,
     _QWERTY,
     _QWERTY_MIRRORED
@@ -32,7 +31,7 @@ enum layer_names {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_QWERTY_GAMING] = LAYOUT_ortho_6x4(
-        DF(_QWERTY_GAMING), DF(_FROG), DF(_NUM), DF(_QWERTY),
+        DF(_QWERTY_GAMING), DF(_GAMING), DF(_NUM), DF(_QWERTY),
         KC_LSFT, KC_LCTL, KC_U, KC_ESC,
         KC_SPC,  KC_Z,    KC_A, KC_Q,
         KC_G,    KC_X,    KC_S, KC_W,
@@ -40,27 +39,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_M,    KC_V,    KC_F, KC_R
         ),
 
-[_FROG] = LAYOUT_ortho_6x4(
-        DF(_QWERTY_GAMING), DF(_FROG), DF(_NUM), DF(_QWERTY),
-        LT(_FROG_ALT,KC_SPC),  KC_U, KC_O, KC_F,
-        LSFT_T(KC_BSPC),       KC_I, KC_E, KC_A,
-        LCTL_T(KC_TAB),        KC_N, KC_H, KC_R,
-        LALT_T(KC_ENT),        KC_S, KC_T, KC_W,
-        LGUI_T(KC_ESC),        KC_Y, KC_D, KC_P
-        ),
-
-[_FROG_ALT] = LAYOUT_ortho_6x4(
-        DF(_QWERTY_GAMING), DF(_FROG), DF(_NUM), DF(_QWERTY),
-        _______,         KC_DEL,  KC_Q, KC_TAB,
-        LSFT_T(KC_DEL),  KC_MINS, KC_Z, KC_QUOT,
-        LCTL_T(KC_TAB),  KC_K,    KC_L, KC_B,
-        LALT_T(KC_ENT),  KC_G,    KC_C, KC_M,
-        LGUI_T(KC_ESC),  KC_X,    KC_V, KC_J
+[_GAMING] = LAYOUT_ortho_6x4(
+        DF(_QWERTY_GAMING), DF(_GAMING), DF(_NUM), DF(_QWERTY),
+        KC_LSFT, KC_LCTL, KC_U, KC_ESC,
+        KC_SPC,  KC_Z,    KC_LEFT, KC_Q,
+        KC_G,    KC_X,    KC_DOWN, KC_UP,
+        KC_B,    KC_C,    KC_RIGHT, KC_E,
+        KC_M,    KC_V,    KC_F, KC_R
         ),
 
 [_NUM] = LAYOUT_ortho_6x4(
-        DF(_QWERTY_GAMING), DF(_FROG), DF(_NUM), DF(_QWERTY),
-        KC_NLCK, KC_PSLS, KC_PAST, KC_BSPC,
+        DF(_QWERTY_GAMING), DF(_GAMING), DF(_NUM), DF(_QWERTY),
+        KC_NUM,  KC_PSLS, KC_PAST, KC_BSPC,
         KC_P7,   KC_P8,   KC_P9,   KC_PMNS,
         KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
         KC_P1,   KC_P2,   KC_P3,   KC_PEQL,
@@ -68,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ),
 
 [_QWERTY] = LAYOUT_ortho_6x4(
-        DF(_QWERTY_GAMING), DF(_FROG), DF(_NUM), DF(_QWERTY),
+        DF(_QWERTY_GAMING), DF(_GAMING), DF(_NUM), DF(_QWERTY),
         LT(_QWERTY_MIRRORED, KC_SPC),    KC_Z, KC_A, KC_Q,
         LSFT_T(KC_BSPC), KC_X, KC_S, KC_W,
         LCTL_T(KC_TAB),  KC_C, KC_D, KC_E,
@@ -77,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ),
 
 [_QWERTY_MIRRORED] = LAYOUT_ortho_6x4(
-        DF(_QWERTY_GAMING), DF(_FROG), DF(_NUM), DF(_QWERTY),
+        DF(_QWERTY_GAMING), DF(_GAMING), DF(_NUM), DF(_QWERTY),
         _______,         KC_N,    KC_H,    KC_Y,
         LSFT_T(KC_DEL),  KC_M,    KC_J,    KC_U,
         LCTL_T(KC_TAB),  KC_COMM, KC_K,    KC_I,
