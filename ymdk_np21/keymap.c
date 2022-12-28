@@ -2,6 +2,7 @@
 
 enum layer_names {
     _QWERTY_GAMING,
+    _QWERTY_GAMING_ALT,
     _GAMING,
     _NUM,
     _QWERTY,
@@ -34,9 +35,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         DF(_QWERTY_GAMING), DF(_GAMING), DF(_NUM), DF(_QWERTY),
         KC_LSFT, KC_LCTL, KC_U, KC_ESC,
         KC_SPC,  KC_Z,    KC_A, KC_Q,
-        KC_G,    KC_X,    KC_S, KC_W,
+        LT(_QWERTY_GAMING_ALT, KC_G),    KC_X,    KC_S, KC_W,
         KC_B,    KC_C,    KC_D, KC_E,
         KC_M,    KC_V,    KC_F, KC_R
+        ),
+
+[_QWERTY_GAMING_ALT] = LAYOUT_ortho_6x4(
+        DF(_QWERTY_GAMING), DF(_GAMING), DF(_NUM), DF(_QWERTY),
+        _______,  _______,  _______,  KC_1,
+        _______,  _______,  _______,  KC_2,
+        _______,  _______,  _______,  KC_3,
+        _______,  _______,  _______,  KC_4,
+        _______,  _______,  KC_T,     KC_5
         ),
 
 [_GAMING] = LAYOUT_ortho_6x4(
