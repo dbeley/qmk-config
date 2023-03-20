@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_QWERTY_GAMING_ALT] = LAYOUT_ortho_6x4(
         DF(_QWERTY_GAMING), DF(_GAMING), DF(_NUM), DF(_QWERTY),
-        _______,  _______,  KC_TAB,   KC_1,
+        _______,  KC_H,     KC_TAB,   KC_1,
         _______,  KC_J,     _______,  KC_2,
         _______,  KC_K,     _______,  KC_3,
         _______,  KC_L,     _______,  KC_4,
