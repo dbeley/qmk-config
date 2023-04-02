@@ -1,11 +1,11 @@
 # The default keymap for the YMDK NP21 keypad
 
 The four top keys control the active layer. From left to right:
-- L_QG: Qwerty gaming layer
-- L_Ga: Qwerty gaming layer 2 (arrows instead of WASD)
-- L_Nu: Numpad layer
-- L_Bl: Backlight configuration layer
-- Md: Alt qwerty gaming layer
+- `L_QG`: Qwerty gaming layer
+- `L_QG2`: Qwerty gaming layer 2 (arrows instead of WASD)
+- `L_Nu`: Numpad layer
+- `L_Bl`: Backlight configuration layer
+- `Md`: Alt qwerty gaming layer
 
 ## Qwerty gaming
 
