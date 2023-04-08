@@ -18,6 +18,12 @@ mkdir -p ~/qmk_firmware/keyboards/sofle/keymaps/dbeley
 cp -r sofle/* ~/qmk_firmware/keyboards/sofle/keymaps/dbeley
 # qmk compile -kb sofle -km dbeley
 printf "##########################\n"
+printf "######### sofle-gamepad ##\n"
+printf "##########################\n"
+mkdir -p ~/qmk_firmware/keyboards/sofle/keymaps/dbeley-gamepad
+cp -r sofle-gamepad/* ~/qmk_firmware/keyboards/sofle/keymaps/dbeley-gamepad
+# qmk compile -kb sofle -km dbeley-gamepad
+printf "##########################\n"
 printf "######### xd75 ###########\n"
 printf "##########################\n"
 mkdir -p ~/qmk_firmware/keyboards/xd75/keymaps/dbeley

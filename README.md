@@ -5,6 +5,7 @@ Some config files for the following QMK-compatible devices:
 - preonic/rev3: 12x5 ortho
 - ymdk/ymd21/v2: 24-keys macropad
 - sofle: ergonomic split ortho
+- sofle-gamepad: right half of the sofle used for gaming
 - ploopyco/trackball/rev1: trackball (I have the left-handed version)
 
 ## Install
