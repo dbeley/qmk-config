@@ -3,11 +3,13 @@
 enum sofle_layers {
     _QWERTY,
     _RAISE,
+    _MIRROR,
 };
 
 enum custom_keycodes {
     KC_QWERTY = SAFE_RANGE,
     KC_RAISE,
+    KC_MIRROR,
 };
 
 
@@ -27,32 +29,53 @@ enum custom_keycodes {
  	 *            `-----------------------------------'           '------''---------------------------'
  	 */
 	[_QWERTY] = LAYOUT( \
-	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_ESC,   KC_1,  KC_2,   KC_3,   KC_4,   KC_5, \
-	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_TAB,   KC_Q,  KC_W,   KC_E,   KC_R,   KC_T, \
-	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_U,     KC_A,  KC_S,   KC_D,   KC_F,   KC_G, \
-	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,     KC_MUTE,     KC_MUTE, KC_LCTL,  KC_Z,  KC_X,   KC_C,   KC_V,   KC_B, \
+	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_ESC,   KC_1,  KC_2,  KC_3,  KC_4,  KC_5, \
+	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_TAB,   KC_Q,  KC_W,  KC_E,  KC_R,  KC_T, \
+	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_U,     KC_A,  KC_S,  KC_D,  KC_F,  KC_G, \
+	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_MUTE,         KC_MUTE, KC_LCTL,  KC_Z,  KC_X,  KC_C,  KC_V,  KC_B, \
       	    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                       KC_RAISE, KC_LSFT, KC_SPC, KC_ENT, KC_M \
 	),
 	/* RAISE
  	 * ,-----------------------------------------.                    ,-----------------------------------------.
- 	 * |      |      |      |      |      |      |                    |  F10 |  F11 | F12  |  7   |  8   |  9   |
+ 	 * |      |      |      |      |      |      |                    |  H   | F10  | F11  | F12  | PgU  | PgD  |
  	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- 	 * |      |      |      |      |      |      |                    |  F7  |  F8  | F9   |  4   |  5   |  6   |
+ 	 * |      |      |      |      |      |      |                    |  J   | F7   | F8   | F9   |  8   |  9   |
  	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- 	 * |      |      |      |      |      |      |-------.    ,-------|  F4  |  F5  | F6   |  1   |  2   |  3   |
+ 	 * |      |      |      |      |      |      |-------.    ,-------|  K   | F4   | F5   | F6   |  6   |  7   |
  	 * |------+------+------+------+------+------| MUTE  |    | MUTE  |------+------+------+------+------+------|
- 	 * |      |      |      |      |      |      |-------|    |-------|  F1  |  F2  | F3   |  0   |  H   |  J   |
+ 	 * |      |      |      |      |      |      |-------|    |-------|  L   | F1   | F2   | F3   |  0   |  Y   |
  	 * `-----------------------------------------/       /     \      \-----------------------------------------'
- 	 *            |      |      |      |      | /       /       \      \  |  Tab | Play | Del  | Bspc |
+ 	 *            |      |      |      |      | /       /       \      \  |  Bspc| Play | Del  | MIRR |
  	 *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  	 *            `-----------------------------------'           '------''---------------------------'
  	 */
 	[_RAISE] = LAYOUT( \
-	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_F10, KC_F11, KC_F12, KC_7,   KC_8,   KC_9, \
-	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_F7,  KC_F8,  KC_F9,  KC_4,   KC_5,   KC_6, \
-	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_F4,  KC_F5,  KC_F6,  KC_1,   KC_2,   KC_3, \
-	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,     KC_NO,       _______, KC_F1,  KC_F2,  KC_F3,  KC_0,   KC_H,   KC_J, \
-         	 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                      _______, KC_TAB, KC_MPLY, KC_DEL, KC_BSPC \
+	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_H,  KC_F10, KC_F11, KC_F12, KC_PGUP, KC_PGDN, \
+	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_J,  KC_F7,  KC_F8,  KC_F9,  KC_8 ,   KC_9,    \
+	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_K,  KC_F4,  KC_F5,  KC_F6,  KC_6 ,   KC_7,    \
+	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,           _______, KC_L,  KC_F1,  KC_F2,  KC_F3,  KC_0 ,   KC_Y,    \
+           KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                      _______, KC_BSPC, KC_MPLY, KC_DEL, KC_MIRROR \
+	),
+ 	/* MIRROR
+ 	 * ,-----------------------------------------.                    ,-----------------------------------------.
+ 	 * |      |      |      |      |      |      |                    |   6  |   7  |   8  |   9  |   0  |  '   |
+ 	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ 	 * |      |      |      |      |      |      |                    |   Y  |   U  |   I  |   O  |   P  | Bspc |
+ 	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ 	 * |      |      |      |      |      |      |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  | Enter|
+ 	 * |------+------+------+------+------+------| MUTE  |    | MUTE  |------+------+------+------+------+------|
+ 	 * |      |      |      |      |      |      |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |RShift|
+ 	 * `-----------------------------------------/       /     \      \-----------------------------------------'
+ 	 *            |      |      |      |      | /       /       \RAISE \  |Space | RCtrl| RAlt | QWER |
+ 	 *            |      |      |      |      |/       /         \      \ |      |      |      |      |
+ 	 *            `-----------------------------------'           '------''---------------------------'
+ 	 */
+	[_MIRROR] = LAYOUT( \
+	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_6,  KC_7,  KC_8,    KC_9,    KC_0,    KC_QUOT,        \
+	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_Y,  KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC,        \
+	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_H,  KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT,         \
+	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,           KC_MUTE, KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ESC), \
+      	  KC_NO,  KC_NO, KC_NO, KC_NO, KC_NO,                     KC_RAISE, KC_SPC, KC_RCTRL, KC_RALT, KC_QWERTY \
 	),
 
 	};
@@ -122,6 +145,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_QWERTY:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_QWERTY);
+            }
+            return false;
+        case KC_MIRROR:
+            if (record->event.pressed) {
+                set_single_persistent_default_layer(_MIRROR);
             }
             return false;
         case KC_RAISE:
