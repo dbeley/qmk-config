@@ -24,7 +24,7 @@ enum custom_keycodes {
  	 * |------+------+------+------+------+------| MUTE  |    | MUTE  |------+------+------+------+------+------|
  	 * |      |      |      |      |      |      |-------|    |-------|  Ctrl|   Z  |   X  |   C  |   V  |  B   |
  	 * `-----------------------------------------/       /     \      \-----------------------------------------'
- 	 *            |      |      |      |      | /       /       \ RAISE\  | Shft | Spce | Ent  | M    |
+ 	 *            |      |      |      |      | /       /       \ RAISE\  | Shft | Spce | LAlt | M    |
  	 *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  	 *            `-----------------------------------'           '------''---------------------------'
  	 */
@@ -33,7 +33,7 @@ enum custom_keycodes {
 	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_TAB,   KC_Q,  KC_W,  KC_E,  KC_R,  KC_T, \
 	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_U,     KC_A,  KC_S,  KC_D,  KC_F,  KC_G, \
 	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_MUTE,         KC_MUTE, KC_LCTL,  KC_Z,  KC_X,  KC_C,  KC_V,  KC_B, \
-      	    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                       KC_RAISE, KC_LSFT, KC_SPC, KC_ENT, KC_M \
+      	    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                       KC_RAISE, KC_LSFT, KC_SPC, KC_LALT, KC_M \
 	),
 	/* RAISE
  	 * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -43,7 +43,7 @@ enum custom_keycodes {
  	 * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  	 * |      |      |      |      |      |      |-------.    ,-------|  K   | F4   | F5   | F6   |  6   |  7   |
  	 * |------+------+------+------+------+------| MUTE  |    | MUTE  |------+------+------+------+------+------|
- 	 * |      |      |      |      |      |      |-------|    |-------|  L   | F1   | F2   | F3   |  0   |  Y   |
+ 	 * |      |      |      |      |      |      |-------|    |-------|  L   | F1   | F2   | F3   |  0   |  Ent |
  	 * `-----------------------------------------/       /     \      \-----------------------------------------'
  	 *            |      |      |      |      | /       /       \      \  |  Bspc| Play | Del  | MIRR |
  	 *            |      |      |      |      |/       /         \      \ |      |      |      |      |
@@ -53,7 +53,7 @@ enum custom_keycodes {
 	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_H,  KC_F10, KC_F11, KC_F12, KC_PGUP, KC_PGDN, \
 	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_J,  KC_F7,  KC_F8,  KC_F9,  KC_8 ,   KC_9,    \
 	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_K,  KC_F4,  KC_F5,  KC_F6,  KC_6 ,   KC_7,    \
-	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,           _______, KC_L,  KC_F1,  KC_F2,  KC_F3,  KC_0 ,   KC_Y,    \
+	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,           _______, KC_L,  KC_F1,  KC_F2,  KC_F3,  KC_0 ,   KC_ENT,    \
            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                      _______, KC_BSPC, KC_MPLY, KC_DEL, KC_MIRROR \
 	),
  	/* MIRROR
@@ -75,7 +75,7 @@ enum custom_keycodes {
 	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_Y,  KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC,        \
 	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_H,  KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT,         \
 	KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,           KC_MUTE, KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ESC), \
-      	  KC_NO,  KC_NO, KC_NO, KC_NO, KC_NO,                     KC_RAISE, KC_SPC, KC_RCTRL, KC_RALT, KC_QWERTY \
+      	  KC_NO,  KC_NO, KC_NO, KC_NO, KC_NO,                     KC_RAISE, KC_SPC, KC_RCTL, KC_RALT, KC_QWERTY \
 	),
 
 	};
@@ -265,6 +265,9 @@ static void print_status_primary(void) {
     switch (get_highest_layer(default_layer_state)) {
         case _QWERTY:
             oled_write("QWRTY", false);
+            break;
+        case _MIRROR:
+            oled_write("MIRRO", false);
             break;
         default:
             oled_write("UNDEF", false);
