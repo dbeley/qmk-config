@@ -61,9 +61,11 @@ const char *pocket_layout_name(void) {
 
 // alpha rows: 5 keys, gap, 5 keys
 #define RM10(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10) a1, a2, a3, a4, a5, U_NP, U_NP, a6, a7, a8, a9, a10
-// thumb row: 10 miryoku positions spread over 12 columns, the two spare keys
-// on the right stay inert
-#define TM10(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10) a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, U_NP, U_NP
+// thumb row: Miryoku's slot 1 keeps column 1 (the BACK key, so it stays on the
+// key that is HYPER in BASE), then one column is skipped so its six thumb keys
+// land on columns 4-9, centred over the pocket's thumb area and splitting the
+// hands between the two Space keys. Columns 10-12 stay inert.
+#define TM10(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10) a1, U_NP, a2, a3, a4, a5, a6, a7, a8, a9, a10, U_NP
 // LAYOUT takes 64 arguments, and a macro argument that itself expands to a
 // comma-separated list does not count as several arguments. Bouncing the
 // already-expanded rows through a variadic macro re-parses them, so the rows
@@ -134,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *   row2  home row mods  cols 1-5 | gap 6-7 | cols 8-12
      *   row3  alpha bottom   cols 1-5 | gap 6-7 | cols 8-12
      *   row4  inert
-     *   row5  BACK | thumbs 3-8        | inert
+     *   row5  BACK at col 1, thumbs at cols 4-9, rest inert
      *
      * Thumbs, left to right: Esc/Media, Space/Nav, Tab/Mouse,
      *                        Enter/Sym, Backspace/Num, Delete/Fun.
