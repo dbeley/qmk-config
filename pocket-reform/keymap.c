@@ -3,14 +3,6 @@
 #include QMK_KEYBOARD_H
 #include "pocket_reform.h"
 
-bool pocket_is_miryoku(void) {
-    return get_highest_layer(default_layer_state) >= _M_BASE;
-}
-
-const char *pocket_layout_name(void) {
-    return pocket_is_miryoku() ? "MIRYOKU" : "BASE";
-}
-
 /* ---------------------------------------------------------------- miryoku --
  *
  * Layer tables copied verbatim from miryoku_qmk (Colemak-DH alphas, VI
@@ -104,28 +96,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     /*
      * HYPER: functions on the number row, arrows on HJKL, OLED menu on Enter,
-     * RGB controls and the bootloader escape on the bottom row.
+     * RGB controls on the bottom row. The bootloader is HYPER + the E key
+     * (the F13 slot): deliberate, two-handed, and nowhere near Ctrl.
      *
      * ┌─────┬─────┬─────┬───┬───┬───┬───┬───┬───┬───┬─────┬──────┐
      * │  `  │ F1  │ F2  │F3 │F4 │F5 │F6 │F7 │F8 │F9 │ F10 │ BSPC │
      * ├─────┼─────┼─────┼───┼───┼───┼───┼───┼───┼───┼─────┼──────┤
-     * │     │ F11 │ F12 │F13│   │   │   │   │ I │ [ │ ]   │      │
+     * │     │ F11 │ F12 │BOOT│  │   │   │   │ I │ [ │ ]   │      │
      * ├─────┼─────┼─────┼───┼───┼───┼───┼───┼───┼───┼─────┼──────┤
      * │     │     │     │   │   │   │ ← │ ↓ │ ↑ │ → │     │ MENU │
      * ├─────┼─────┼─────┼───┼───┼───┼───┼───┼───┼───┼─────┼──────┤
      * │     │     │     │   │   │   │   │   │   │   │ PGUP│ RSFT │
      * ├─────┼─────┼─────┼───┼───┼───┼───┼───┼───┼───┼─────┼──────┤
-     * │     │     │     │RGB│VAL+│  │   │VAL-│   │     │     │ BOOT │
+     * │     │     │     │RGB│VAL+│  │   │VAL-│   │     │     │      │
      * └─────┴─────┴─────┼───┼───┼───┴───┼───┼───┴───┴─────┴──────┘
      *                   │   │   │       │   │
      *                   └───┴───┘       └───┘
      */
     [_HYPER] = LAYOUT(
         KC_GRV,      KC_F1,       KC_F2,       KC_F3,       KC_F4,       KC_F5,       KC_F6,       KC_F7,       KC_F8,       KC_F9,       KC_F10,      KC_BSPC,
-        KC_TRNS,     KC_F11,      KC_F12,      KC_F13,      KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_I,        KC_LBRC,     KC_RBRC,     KC_TRNS,
+        KC_TRNS,     KC_F11,      KC_F12,      QK_BOOT,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_I,        KC_LBRC,     KC_RBRC,     KC_TRNS,
         KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_LEFT,     KC_DOWN,     KC_UP,       KC_RGHT,     KC_TRNS,     MNT_MENU,
         KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_PGUP,     KC_RSFT,
-        KC_TRNS,     KC_TRNS,     KC_TRNS,     UG_TOGG,     UG_VALU,     KC_TRNS,     KC_TRNS,     UG_VALD,     KC_TRNS,     KC_TRNS,     KC_TRNS,     QK_BOOT,
+        KC_TRNS,     KC_TRNS,     KC_TRNS,     UG_TOGG,     UG_VALU,     KC_TRNS,     KC_TRNS,     UG_VALD,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
         KC_TRNS,     KC_TRNS,                                                                                    KC_TRNS,     KC_TRNS
     ),
 

@@ -17,6 +17,3 @@ enum pocket_layers {
     _M_FUN,
     POCKET_LAYER_COUNT
 };
-
-bool pocket_is_miryoku(void);
-const char *pocket_layout_name(void);

@@ -26,7 +26,7 @@ and the OLED keeps working in both layouts.
 | Miryoku thumbs | row 5, centre six keys (directly above the four small thumb keys) |
 | Miryoku dead keys | row 4 entirely, columns 6–7 of rows 1–3, outer columns of row 5 |
 | Trackball keys | the four small keys below row 5 are never remapped (`MS_BTN1/2/3`, `MNT_SCRL`) |
-| OLED | stays functional; adds a layout indicator and optional animation |
+| OLED | left to the port's own screens (menu, battery, confirm, help); no layout indicator, no idle art |
 | Backlight colour from the host | QMK raw HID report from `nixos-mnt-pocket-reform`'s keyboard module (replaces MNT's `xLRGB`/`xLBRT`) |
 
 ## BASE layer
@@ -90,21 +90,10 @@ thumb     M3 M1                     SCRL M2          untouched
 
 ## OLED
 
-Three states, arbitrated in `oled_task_user()` (the port's own screens run
-first and always win):
-
-| State | Condition | Content |
-| --- | --- | --- |
-| Port screens | `menu_screen != OFF` | unchanged (menu, battery, confirm, help, hello) |
-| Blank | `menu_screen == OFF`, idle ≥ 5 s | display off (the port's existing anti burn-in behaviour) |
-| Idle art | `menu_screen == OFF`, awake | animation (bongo cat / luna frames) or, if frames fill the panel, the layout word |
-
-* On every layout switch: a 2 s splash showing `BASE` or `MIRYOKU`.
-* Layout word is shown whenever no other screen is up, so the active layout is
-  never ambiguous.
-* Animation frames come from QMK's in-tree bongo-cat keymaps
-  (`keyboards/adpenrose/akemipad/keymaps/oled_bongocat/animation_frames.h`
-  as a starting point) and must fit the port's 128×~32 panel.
+No keymap code touches the display. An attempt at a layout indicator was
+dropped: a word kept lit for 5 s after every keypress is a burn-in pattern, and
+splash-only proved not worth the code. The port's own screens (menu, battery,
+confirm, help, hello) behave exactly as its author wrote them.
 
 ## Host-controlled backlight
 
@@ -122,8 +111,12 @@ byte 4  value   0-255   (0 = backlight off)
 bytes 5-31 unused
 ```
 
-`pocket_backlight.c` receives it in `raw_hid_receive()`, converts RGB→HSV and
-calls `rgblight_sethsv_noeeprom()`. The module writes the report to every
+`pocket_backlight.c` receives it in `raw_hid_receive()`. Byte 4 is `0xFF` when
+the host wants the keyboard's current brightness kept: the trackball sets hue
+and brightness while HYPER is held and the firmware stores them in EEPROM, so
+the host only overrides them on request. The colour is pushed with
+`rgblight_setrgb()` after syncing the HSV config, because QMK's HSV→RGB path
+applies a CIE curve that would shift the requested colour. The module writes the report to every
 hidraw node of `feed:0000` because udev does not expose the HID usage page; only
 the raw HID interface accepts it. The option's 0-150 brightness scale is
 rescaled to 0-255 host-side, so the NixOS option keeps its stock semantics.

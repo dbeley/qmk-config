@@ -70,7 +70,7 @@ Bootloader routes, easiest first:
 
 1. **Menu**: hold the bottom-left key (HYPER) and press Enter, then `X`, then
    confirm. Works from BASE and from HYPER.
-2. **Keycode**: `QK_BOOT` on the HYPER layer (row 2, column 4).
+2. **Keycode**: `QK_BOOT` on HYPER + `E` (row 2, column 4).
 3. **Hardware**: open the top cover and double-press RESET on the OLED board.
 
 The keyboard cannot type once it is in flash mode, so arm the flash first and
@@ -99,7 +99,7 @@ QMK raw HID output report (see `design.md`, "Host-controlled backlight").
 
 Switching: **HYPER + Shift + M** enters MIRYOKU; the bottom-left key (`BACK`)
 returns to BASE. The choice persists across reboots (`QK_CLEAR_EEPROM` lives on
-MIRYOKU's Fun layer). The OLED names the active layout.
+MIRYOKU's Fun layer).
 
 MIRYOKU's bottom row (row 5):
 
@@ -123,4 +123,7 @@ MO  ◆ ⌥ \ = ␣ ␣  - /  RALT ◆  RCTL
         M3 M1        SCRL M2
 ```
 
-HYPER additionally gives `H/J/K/L` = ← ↓ ↑ → and `↑` = Page Up.
+HYPER additionally gives `H/J/K/L` = ← ↓ ↑ →, `↑` = Page Up, `UG_TOGG` on `\`
+and brightness on `=` / `-`. `QK_BOOT` is on HYPER + the `E` key (the F13
+slot): two-handed and nowhere near Ctrl, after HYPER + the bottom-right key
+turned out to be too easy to hit.

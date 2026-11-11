@@ -11,14 +11,20 @@
 //   byte 1 : red    0-255
 //   byte 2 : green  0-255
 //   byte 3 : blue   0-255
-//   byte 4 : value  0-255 (0 turns the backlight off)
+//   byte 4 : value  0-255, 0xFF = keep the keyboard's current brightness,
+//           0 = backlight off
 //   bytes 5-31: unused
+//
+// Brightness is the keyboard's own: the trackball adjusts hue and brightness
+// while HYPER is held (trackball.c) and stores them in EEPROM, so the host
+// leaves byte 4 at 0xFF unless someone really wants to pin it.
 //
 // Anything else is ignored so the report can grow later.
 
 #include QMK_KEYBOARD_H
 
 #define POCKET_BL_CMD_COLOUR 'C'
+#define POCKET_BL_KEEP_VAL 0xFF
 
 static uint8_t rgb_to_hue8(uint8_t r, uint8_t g, uint8_t b, uint8_t *sat, uint8_t *val) {
     int max = MAX(r, MAX(g, b));
@@ -50,16 +56,26 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
         return;
     }
 
-    uint8_t sat, val;
-    uint8_t hue = rgb_to_hue8(data[1], data[2], data[3], &sat, &val);
+    uint8_t r = data[1], g = data[2], b = data[3];
     uint8_t brightness = data[4];
 
+    if (brightness == POCKET_BL_KEEP_VAL) {
+        brightness = rgblight_get_val();
+    }
     if (brightness == 0) {
         rgblight_disable_noeeprom();
         return;
     }
 
+    uint8_t sat, val;
+    uint8_t hue = rgb_to_hue8(r, g, b, &sat, &val);
+
     rgblight_enable_noeeprom();
     // _noeeprom: this runs on every USB enumeration, no need to wear the flash.
+    // Keeping the HSV config in sync makes the trackball's hue/brightness
+    // gesture start from what is actually on screen.
     rgblight_sethsv_noeeprom(hue, sat, brightness);
+    // ...then write the exact colour the host asked for, scaled by brightness:
+    // the HSV round trip goes through QMK's CIE curve, which would shift it.
+    rgblight_setrgb((uint16_t)r * brightness / 255, (uint16_t)g * brightness / 255, (uint16_t)b * brightness / 255);
 }
