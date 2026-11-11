@@ -132,9 +132,9 @@ qmk compile -kb mntre/pocket_reform_hid -km dbeley
 sudo picotool load -x mntre_pocket_reform_hid_dbeley.uf2
 ```
 
-Bootloader: the HYPER key plus Enter opens the keyboard menu, `X` flashes; there
-is also `QK_BOOT` on the HYPER layer and inside the Miryoku Fun layer, plus the
-physical RESET button under the top cover.
+Bootloader: the HYPER key plus Enter opens the keyboard menu, `X` flashes. That
+menu is the only route on purpose; the physical RESET button under the top cover
+is the last resort.
 
 Two layouts live in the firmware. HYPER + Shift + M switches to Miryoku; the
 bottom-left key (`BACK`) returns. Both are persistent, `QK_CLEAR_EEPROM` on
