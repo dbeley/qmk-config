@@ -4,7 +4,8 @@ Two layouts in one firmware for the MNT Pocket Reform's built-in keyboard:
 
 - **BASE** — the stock layout with modifiers added on the right side, arrows moved
   to the HYPER layer.
-- **MIRYOKU** — Miryoku (Colemak-DH, home-row mods, 10 layers), toggled at runtime.
+- **MIRYOKU** — Miryoku (home-row mods, 10 layers), toggled at runtime, with two
+  interchangeable alpha sets: Colemak-DH and Gallium.
 
 ## Hardware/firmware stack
 
@@ -90,9 +91,22 @@ QMK raw HID output report.
 
 ## Layout
 
-Switching: **HYPER + Shift + M** enters MIRYOKU; the bottom-left key (`BACK`)
-returns to BASE. The choice persists across reboots (`QK_CLEAR_EEPROM` lives on
-MIRYOKU's Fun layer).
+Switching: **HYPER + Shift + M** enters MIRYOKU with Colemak-DH alphas,
+**HYPER + Shift + G** enters the same skeleton with Gallium alphas; the
+bottom-left key (`BACK`) returns to BASE from either. The choice persists across
+reboots (`QK_CLEAR_EEPROM` lives on MIRYOKU's Fun layer).
+
+Gallium (`_M_BASE_GALLIUM`), the columnar-staggered variant, with the same six
+thumbs and the same home-row mod positions:
+
+```
+B L D C V  ·  J Y O U ,
+N R T S G  ·  P H A E I
+X Q M W Z  ·  K F ' ; .
+```
+
+Gallium pushes `/` out of its 3x10 block, so it lands on column 10 of the
+bottom row (a key Miryoku leaves dead).
 
 MIRYOKU's bottom row (row 5):
 
