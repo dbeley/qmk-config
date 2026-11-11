@@ -7,6 +7,11 @@
 #define TAPPING_TERM 200
 #define PERMISSIVE_HOLD
 
+// Resolve tap-hold keys by hand, not by clock: a second key on the same hand
+// makes the first one a tap (typing rolls), a second key on the other hand makes
+// it a hold (mods, layer thumbs). Needs chordal_hold_layout in keymap.c.
+#define CHORDAL_HOLD
+
 // The port's config.h boots the RGB backlight off (RGBLIGHT_DEFAULT_ON false),
 // which leaves the keyboard dark. Turn it back on, matching the brightness the
 // stock firmware used. NOTE: rgb state lives in EEPROM, so an already-booted

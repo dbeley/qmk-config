@@ -202,6 +202,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
+/* ------------------------------------------------------- chordal hold hand map --
+ *
+ * Columns 1-6 are the left hand, 7-12 the right one, which is also where the
+ * six Miryoku thumb keys split. The four thumb buttons below the bottom row are
+ * exempt ('*') so trackball clicks never take part in a chord.
+ */
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
+    'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R',
+    'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R',
+    'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R',
+    'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R',
+    'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R',
+    '*', '*', '*', '*'
+);
+
 /* ------------------------------------------------------------------ toggle --
  *
  * HYPER + Shift + M switches to the Miryoku default layer (Colemak-DH),

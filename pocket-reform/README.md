@@ -89,6 +89,18 @@ one press of `HYPER + \` (toggle), `HYPER + =` / `HYPER + -` (brightness)).
 The stylix colour is sent by `nixos-mnt-pocket-reform`'s keyboard module as a
 QMK raw HID output report.
 
+## Tap-hold behaviour
+
+`CHORDAL_HOLD` (QMK core) decides home-row mods and layer thumbs by hand rather
+than by clock: a second key on the **same hand** makes the first one a tap, a
+second key on the **other hand** makes it a hold (with `PERMISSIVE_HOLD`). Typing
+rolls therefore stop producing stray modifiers, while Miryoku's
+hold-a-thumb-on-the-opposite-hand rule keeps working as designed.
+
+The hand map is `chordal_hold_layout` in `keymap.c`: columns 1-6 left, 7-12
+right (the same place the six Miryoku thumbs split), the four thumb buttons
+exempt so trackball clicks never join a chord.
+
 ## Layout
 
 Switching: **HYPER + Shift + M** enters MIRYOKU with Colemak-DH alphas,
