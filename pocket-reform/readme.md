@@ -73,12 +73,27 @@ Bootloader routes, easiest first:
 2. **Keycode**: `QK_BOOT` on the HYPER layer (row 2, column 4).
 3. **Hardware**: open the top cover and double-press RESET on the OLED board.
 
-Then, on the pocket:
+The keyboard cannot type once it is in flash mode, so arm the flash first and
+use the countdown to press the menu keys:
 
 ```sh
-nix shell nixpkgs#picotool -c bash -c \
-  'sudo picotool load mntre_pocket_reform_hid_dbeley.uf2 && sudo picotool reboot'
+nix shell nixpkgs#picotool -c bash -c '
+  sudo -v
+  for i in $(seq 1 120); do picotool info -q >/dev/null 2>&1 && break; sleep 1; done
+  sudo picotool load -x ~/src/qmk_firmware/mntre_pocket_reform_hid_dbeley.uf2'
 ```
+
+`-x` reboots the keyboard into the new firmware. If the loop times out, the
+keyboard never entered flash mode: power-cycle it and retry.
+
+## Backlight
+
+QMK boots the RGB off (`RGBLIGHT_DEFAULT_ON` in our `config.h` turns it back
+on, but the rgb state is stored in EEPROM, so an already-booted keyboard needs
+one press of `HYPER + \` (toggle), `HYPER + =` / `HYPER + -` (brightness)).
+
+The stylix colour is sent by `nixos-mnt-pocket-reform`'s keyboard module as a
+QMK raw HID output report (see `design.md`, "Host-controlled backlight").
 
 ## Layout
 
