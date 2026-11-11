@@ -217,6 +217,23 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
     '*', '*', '*', '*'
 );
 
+/* ----------------------------------------------------------------- flow tap --
+ *
+ * QMK's default Flow Tap already skips hotkeys (ctrl/alt/gui held) and only
+ * fires between main alphas. On this keyboard it must also skip the six Miryoku
+ * thumbs: they are layer-taps, and quickly typing a letter then holding a thumb
+ * has to reach the layer, not a Space/Enter tap.
+ */
+uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_keycode) {
+    if (IS_QK_LAYER_TAP(keycode) || IS_QK_LAYER_TAP(prev_keycode)) {
+        return 0;
+    }
+    if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
+        return FLOW_TAP_TERM;
+    }
+    return 0;
+}
+
 /* ------------------------------------------------------------------ toggle --
  *
  * HYPER + Shift + M switches to the Miryoku default layer (Colemak-DH),
