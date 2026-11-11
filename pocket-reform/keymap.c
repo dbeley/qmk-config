@@ -170,7 +170,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         (U_NP              , U_NP              , U_NA              , U_NA              , U_NA              , KC_MSTP           , KC_MPLY           , KC_MUTE           , U_NP              , U_NP              )
     ),
     [_M_NUM] = LAYOUT_MIRYOKU(
-        (KC_LBRC           , KC_7              , KC_8              , KC_9              , KC_RBRC           , U_NA              , U_NA              , U_NA              , U_NA              , U_NA              ),
+        (KC_LBRC           , KC_7              , KC_8              , KC_9              , KC_RBRC           , U_NA              , U_NA              , U_NA              , U_NA              , MNT_MENU          ),
         (KC_SCLN           , KC_4              , KC_5              , KC_6              , KC_EQL            , U_NA              , KC_LSFT           , KC_LCTL           , KC_LALT           , KC_LGUI           ),
         (KC_GRV            , KC_1              , KC_2              , KC_3              , KC_BSLS           , U_NA              , U_NA              , U_NA              , KC_ALGR           , U_NA              ),
         (U_NP              , U_NP              , KC_DOT            , KC_0              , KC_MINS           , U_NA              , U_NA              , U_NA              , U_NP              , U_NP              )
@@ -182,7 +182,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         (U_NP              , U_NP              , KC_LPRN           , KC_RPRN           , KC_UNDS           , U_NA              , U_NA              , U_NA              , U_NP              , U_NP              )
     ),
     /* Fun layer, keeping the pocket's own escapes on the right hand:
-     * bootloader, EEPROM reset, and the OLED menu (Hyper+Enter in BASE). */
+     * bootloader, EEPROM reset, and the OLED menu (Hyper+Enter in BASE).
+     * The menu also sits on the top-right key of the Num layer (Backspace
+     * thumb), which is easier to find than Del + top-right. */
     [_M_FUN] = LAYOUT_MIRYOKU(
         (KC_F12            , KC_F7             , KC_F8             , KC_F9             , KC_PSCR           , U_NA              , U_NA              , QK_BOOT           , QK_CLEAR_EEPROM   , MNT_MENU          ),
         (KC_F11            , KC_F4             , KC_F5             , KC_F6             , KC_SCRL           , U_NA              , KC_LSFT           , KC_LCTL           , KC_LALT           , KC_LGUI           ),
