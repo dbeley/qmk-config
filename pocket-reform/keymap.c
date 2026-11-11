@@ -11,7 +11,8 @@
  *
  * Two substitutions only:
  *   - Miryoku's tap-dance boot/tap/extra keys become U_NA (we do not carry the
- *     TAP layer; QK_BOOT and QK_CLEAR_EEPROM sit on _M_FUN instead).
+ *     TAP layer; QK_CLEAR_EEPROM sits on _M_FUN instead). No bootloader key is
+ *     bound anywhere on purpose: the port's menu is the only route.
  *   - RGB_* keycodes use their current QMK names (UG_*), and OU_AUTO is dropped.
  *
  * Miryoku rows are 10 keys wide (5 per hand). LAYOUT_MIRYOKU spreads them over
@@ -96,13 +97,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     /*
      * HYPER: functions on the number row, arrows on HJKL, OLED menu on Enter,
-     * RGB controls on the bottom row. The bootloader is HYPER + the E key
-     * (the F13 slot): deliberate, two-handed, and nowhere near Ctrl.
+     * RGB controls on the bottom row. No bootloader key anywhere: the only
+     * route is the port's menu (HYPER + Enter, then X, then confirm), which
+     * asks before it resets, plus the physical RESET button.
      *
      * ┌─────┬─────┬─────┬───┬───┬───┬───┬───┬───┬───┬─────┬──────┐
      * │  `  │ F1  │ F2  │F3 │F4 │F5 │F6 │F7 │F8 │F9 │ F10 │ BSPC │
      * ├─────┼─────┼─────┼───┼───┼───┼───┼───┼───┼───┼─────┼──────┤
-     * │     │ F11 │ F12 │BOOT│  │   │   │   │ I │ [ │ ]   │      │
+     * │     │ F11 │ F12 │F13│   │   │   │   │ I │ [ │ ]   │      │
      * ├─────┼─────┼─────┼───┼───┼───┼───┼───┼───┼───┼─────┼──────┤
      * │     │     │     │   │   │   │ ← │ ↓ │ ↑ │ → │     │ MENU │
      * ├─────┼─────┼─────┼───┼───┼───┼───┼───┼───┼───┼─────┼──────┤
@@ -115,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_HYPER] = LAYOUT(
         KC_GRV,      KC_F1,       KC_F2,       KC_F3,       KC_F4,       KC_F5,       KC_F6,       KC_F7,       KC_F8,       KC_F9,       KC_F10,      KC_BSPC,
-        KC_TRNS,     KC_F11,      KC_F12,      QK_BOOT,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_I,        KC_LBRC,     KC_RBRC,     KC_TRNS,
+        KC_TRNS,     KC_F11,      KC_F12,      KC_F13,      KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_I,        KC_LBRC,     KC_RBRC,     KC_TRNS,
         KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_LEFT,     KC_DOWN,     KC_UP,       KC_RGHT,     KC_TRNS,     MNT_MENU,
         KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_PGUP,     KC_RSFT,
         KC_TRNS,     KC_TRNS,     KC_TRNS,     UG_TOGG,     UG_VALU,     KC_TRNS,     KC_TRNS,     UG_VALD,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
@@ -176,12 +178,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         (KC_TILD           , KC_EXLM           , KC_AT             , KC_HASH           , KC_PIPE           , U_NA              , U_NA              , U_NA              , KC_ALGR           , U_NA              ),
         (U_NP              , U_NP              , KC_LPRN           , KC_RPRN           , KC_UNDS           , U_NA              , U_NA              , U_NA              , U_NP              , U_NP              )
     ),
-    /* Fun layer, keeping the pocket's own escapes on the right hand:
-     * bootloader, EEPROM reset, and the OLED menu (Hyper+Enter in BASE).
-     * The menu also sits on the top-right key of the Num layer (Backspace
-     * thumb), which is easier to find than Del + top-right. */
+    /* Fun layer, keeping the pocket's own escapes on the right hand: the EEPROM
+     * reset (the way back to BASE if this layout ever traps you) and the OLED
+     * menu, which is also the only route to the bootloader. The menu also sits
+     * on the top-right key of the Num layer (Backspace thumb), which is easier
+     * to find than Del + top-right. */
     [_M_FUN] = LAYOUT_MIRYOKU(
-        (KC_F12            , KC_F7             , KC_F8             , KC_F9             , KC_PSCR           , U_NA              , U_NA              , QK_BOOT           , QK_CLEAR_EEPROM   , MNT_MENU          ),
+        (KC_F12            , KC_F7             , KC_F8             , KC_F9             , KC_PSCR           , U_NA              , U_NA              , U_NA              , QK_CLEAR_EEPROM   , MNT_MENU          ),
         (KC_F11            , KC_F4             , KC_F5             , KC_F6             , KC_SCRL           , U_NA              , KC_LSFT           , KC_LCTL           , KC_LALT           , KC_LGUI           ),
         (KC_F10            , KC_F1             , KC_F2             , KC_F3             , KC_PAUS           , U_NA              , U_NA              , U_NA              , KC_ALGR           , U_NA              ),
         (U_NP              , U_NP              , KC_APP            , KC_SPC            , KC_TAB            , U_NA              , U_NA              , U_NA              , U_NP              , U_NP              )

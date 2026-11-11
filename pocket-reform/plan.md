@@ -15,7 +15,7 @@
 - Do not modify the port's own files (`config.h`, `rules.mk`, `oled.c`, `pocket_reform_hid.c`, `trackball.c`) — only files inside `keymaps/dbeley/`.
 - `TAPPING_TERM 200` (matches the cantor setup) and `PERMISSIVE_HOLD` for home-row mods.
 - Miryoku alpha default: Colemak-DH (`MIRYOKU_ALPHAS_COLEMAKDH`).
-- Every keymap must keep a bootloader path reachable: `QK_BOOT` in the HYPER layer and in MIRYOKU's `_M_FUN`; `QK_CLEAR_EEPROM` in `_M_FUN`.
+- No `QK_BOOT` anywhere: the bootloader is reached only via the port's menu (HYPER + Enter, `X`, confirm). `QK_CLEAR_EEPROM` stays in MIRYOKU's `_M_FUN` as the escape hatch.
 - The four small thumb keys stay `MS_BTN3`, `MS_BTN1`, `MNT_SCRL`, `MS_BTN2` in every layer.
 - `LAYOUT` takes exactly 64 arguments: 5 rows × 12 keys, then `MS_BTN3, MS_BTN1, MNT_SCRL, MS_BTN2`.
 - No unit tests exist for firmware. The gate for every task is: `qmk lint` clean → compiles → the task's on-device checklist passes. Never flash a keymap that removes the only boot path on the device.
@@ -23,7 +23,7 @@
 
 ## Review Focus
 
-1. **Losing the boot path.** A keymap whose only route to the bootloader is a key that MIRYOKU mode removed leaves the laptop recoverable only by opening the top cover. Expect both layouts to expose `QK_BOOT` (Task 3).
+1. **Losing the boot path.** The port's menu is the only route to the bootloader, so it must open from both layouts (HYPER + Enter in BASE, Fun/Num + top-right in MIRYOKU). Expect no `QK_BOOT` anywhere (decided after HYPER + the bottom-right key turned out to be too easy to hit).
 2. **Stale EEPROM default layer.** `set_single_persistent_default_layer()` survives reboots; flashing a keymap where MIRYOKU's `BACK` key moved strands the user in MIRYOKU. Expect `BACK` and `QK_CLEAR_EEPROM` in the same commit as the toggle (Task 3).
 3. **OLED task collision.** QMK's `oled_task_user()` runs after the port's own screen code; drawing over a menu/confirm screen makes power-off hangs possible. Expect art and indicator to be suppressed whenever `menu_screen != OFF` (Tasks 4, 5).
 4. **Dead keys that are not dead.** Column/row mistakes in the MIRYOKU block leave live keys or kill an intended one. Expect every position listed as inert in the spec to be pressed and observed as a no-op (Task 3).

@@ -66,12 +66,11 @@ from inside the tree works too but needs the python deps in the shell.
 
 ## Flash
 
-Bootloader routes, easiest first:
-
-1. **Menu**: hold the bottom-left key (HYPER) and press Enter, then `X`, then
-   confirm. Works from BASE and from HYPER.
-2. **Keycode**: `QK_BOOT` on HYPER + `E` (row 2, column 4).
-3. **Hardware**: open the top cover and double-press RESET on the OLED board.
+Bootloader: hold the bottom-left key (HYPER) and press Enter, `X`, then confirm.
+That menu route is the only one on purpose (no keycode can drop the keyboard
+into flash mode by accident); in MIRYOKU the menu is on the Fun layer, top-right
+key, or the Num layer, top-right key. Last resort: open the top cover and
+double-press RESET on the OLED board.
 
 The keyboard cannot type once it is in flash mode, so arm the flash first and
 use the countdown to press the menu keys:
@@ -124,6 +123,5 @@ MO  ◆ ⌥ \ = ␣ ␣  - /  RALT ◆  RCTL
 ```
 
 HYPER additionally gives `H/J/K/L` = ← ↓ ↑ →, `↑` = Page Up, `UG_TOGG` on `\`
-and brightness on `=` / `-`. `QK_BOOT` is on HYPER + the `E` key (the F13
-slot): two-handed and nowhere near Ctrl, after HYPER + the bottom-right key
-turned out to be too easy to hit.
+and brightness on `=` / `-`. Nothing on any layer drops the keyboard into flash
+mode.

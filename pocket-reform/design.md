@@ -72,8 +72,10 @@ thumb     M3 M1                     SCRL M2          untouched
   Mouse/Nav/Media on the right).
 * `BACK` = `DF(BASE)`: return to the base layout, on the same physical key as
   the HYPER layer key in BASE (bottom-left).
-* `QK_BOOT` and `QK_CLEAR_EEPROM` stay reachable in MIRYOKU mode (M_FUN layer,
-  next to Miryoku's own boot entry) so the layout can never strand the device.
+* `QK_CLEAR_EEPROM` stays reachable in MIRYOKU mode (M_FUN layer) so the layout
+  can never strand the device. No `QK_BOOT` is bound anywhere: the bootloader is
+  reached only through the port's menu (HYPER + Enter, `X`, confirm), which
+  confirms before it resets.
 * Alpha choice stays configurable via Miryoku's own flags (`MIRYOKU_ALPHAS_*`),
   default Colemak-DH, matching the cantor setup.
 * Row offset is a single `#define` so `rows 2–4` can be tried instead of
@@ -158,7 +160,7 @@ MIRYOKU's M_FUN layer, or the physical RESET button inside the top cover.
 - [ ] Toggle: Hyper+Shift+M enters MIRYOKU; splash names the layout
 - [ ] MIRYOKU: alphas/thumb layers behave as Miryoku; row 4 and columns 6–7 inert
 - [ ] MIRYOKU: `BACK` returns to BASE; survives a power cycle
-- [ ] Both: `QK_BOOT` and `QK_CLEAR_EEPROM` reachable; recovery via `picotool` works
+- [ ] Both: the menu opens and reaches the flash option; `QK_CLEAR_EEPROM` reachable in MIRYOKU
 - [ ] OLED: menu, battery, confirm, help still render; blanking still happens
 
 ## Open risks
