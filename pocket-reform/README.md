@@ -6,8 +6,6 @@ Two layouts in one firmware for the MNT Pocket Reform's built-in keyboard:
   to the HYPER layer.
 - **MIRYOKU** — Miryoku (Colemak-DH, home-row mods, 10 layers), toggled at runtime.
 
-Design: `design.md`. Implementation plan: `plan.md`.
-
 ## Hardware/firmware stack
 
 The keyboard/trackball controller is an RP2040 on the HID board, driven by the
@@ -23,8 +21,6 @@ Pinned versions (update these notes when bumping):
 | `sleeplessval/qmk-pocket-reform` | `75057bb26ff4cdb6744a5c7e0db87a2fc8f8228c` (2026-10-23) |
 
 ## One-time setup
-
-Toolchain from nixpkgs (all available from the binary cache on aarch64):
 
 ```sh
 nix shell nixpkgs#qmk nixpkgs#gcc-arm-embedded nixpkgs#picotool
@@ -67,30 +63,21 @@ from inside the tree works too but needs the python deps in the shell.
 ## Flash
 
 Bootloader: hold the bottom-left key (HYPER) and press Enter, `X`, then confirm.
-That menu route is the only one on purpose (no keycode can drop the keyboard
-into flash mode by accident); in MIRYOKU the menu is on the Fun layer, top-right
-key, or the Num layer, top-right key. Last resort: open the top cover and
-double-press RESET on the OLED board.
+Last resort: open the top cover and double-press RESET on the OLED board.
 
 The keyboard cannot type once it is in flash mode, so arm the flash first and
 use the delay to press the keys. Enter BASE first: the menu selects its entries
 by keycode (`X` flashes, `1`/`0` power, `B` battery), which are different
 physical keys in Colemak-DH.
 
+Ran those commands all at once:
 ```sh
 nix shell nixpkgs#picotool
-sudo -v                     # authenticate while the keyboard still types
+sudo -v
 sleep 60
+# put the keyboard in flash mode here
 sudo picotool load -x -v ~/src/qmk_firmware/mntre_pocket_reform_hid_dbeley.uf2
 ```
-
-Within those 60 s: **HYPER + Enter → `X` → `X`** (or Enter) to confirm. The
-keyboard drops off USB and comes back as `2e8a:0003`; picotool then prints its
-progress, verifies, and `-x` reboots into the new firmware.
-
-If picotool says no BOOTSEL device was found, the keyboard is not in flash mode:
-check with `lsusb -d 2e8a:0003` from another terminal, power-cycle the keyboard
-and rerun the three commands.
 
 ## Backlight
 
@@ -99,7 +86,7 @@ on, but the rgb state is stored in EEPROM, so an already-booted keyboard needs
 one press of `HYPER + \` (toggle), `HYPER + =` / `HYPER + -` (brightness)).
 
 The stylix colour is sent by `nixos-mnt-pocket-reform`'s keyboard module as a
-QMK raw HID output report (see `design.md`, "Host-controlled backlight").
+QMK raw HID output report.
 
 ## Layout
 
