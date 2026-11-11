@@ -142,6 +142,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         (LT(U_BUTTON,KC_Z) , ALGR_T(KC_X)      , KC_C              , KC_D              , KC_V              , KC_K              , KC_H              , KC_COMM           , ALGR_T(KC_DOT)    , LT(U_BUTTON,KC_SLSH)),
         (PDF(_BASE)        , U_NP              , LT(U_MEDIA,KC_ESC), LT(U_NAV,KC_SPC)  , LT(U_MOUSE,KC_TAB), LT(U_SYM,KC_ENT)  , LT(U_NUM,KC_BSPC) , LT(U_FUN,KC_DEL)  , U_NP              , U_NP              )
     ),
+    /* Gallium alphas on the same Miryoku skeleton: same thumb layers, same
+     * home-row mod positions, only the letters differ. Gallium puts `,` at the
+     * top-right of the block and `'` `;` `.` on the bottom row, which pushes `/`
+     * out of the 3x10 grid; it goes on column 10 of the bottom row, where
+     * Miryoku leaves a dead key. Toggle: HYPER + Shift + G. */
+    [_M_BASE_GALLIUM] = LAYOUT_MIRYOKU(
+        (KC_B              , KC_L              , KC_D              , KC_C              , KC_V              , KC_J              , KC_Y              , KC_O              , KC_U              , KC_COMM           ),
+        (LGUI_T(KC_N)      , LALT_T(KC_R)      , LCTL_T(KC_T)      , LSFT_T(KC_S)      , KC_G              , KC_P              , LSFT_T(KC_H)      , LCTL_T(KC_A)      , LALT_T(KC_E)      , LGUI_T(KC_I)      ),
+        (LT(U_BUTTON,KC_X) , ALGR_T(KC_Q)      , KC_M              , KC_W              , KC_Z              , KC_K              , KC_F              , KC_QUOT           , ALGR_T(KC_SCLN)   , LT(U_BUTTON,KC_DOT)),
+        (PDF(_BASE)        , U_NP              , LT(U_MEDIA,KC_ESC), LT(U_NAV,KC_SPC)  , LT(U_MOUSE,KC_TAB), LT(U_SYM,KC_ENT)  , LT(U_NUM,KC_BSPC) , LT(U_FUN,KC_DEL)  , KC_SLSH           , U_NP              )
+    ),
     [_M_BUTTON] = LAYOUT_MIRYOKU(
         (U_UND             , U_CUT             , U_CPY             , U_PST             , U_RDO             , U_RDO             , U_PST             , U_CPY             , U_CUT             , U_UND             ),
         (KC_LGUI           , KC_LALT           , KC_LCTL           , KC_LSFT           , U_NU              , U_NU              , KC_LSFT           , KC_LCTL           , KC_LALT           , KC_LGUI           ),
@@ -193,16 +204,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* ------------------------------------------------------------------ toggle --
  *
- * HYPER + Shift + M switches to the Miryoku default layer, and the BACK key on
- * Miryoku's bottom row (PDF(_BASE)) comes back. Both are *persistent*
+ * HYPER + Shift + M switches to the Miryoku default layer (Colemak-DH),
+ * HYPER + Shift + G to the same thing with Gallium alphas, and the BACK key on
+ * Miryoku's bottom row (PDF(_BASE)) comes back to BASE. Both are *persistent*
  * (PDF, not DF), so the choice survives reboots; QK_CLEAR_EEPROM on _M_FUN
  * resets it.
  */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (record->event.pressed && keycode == KC_M && layer_state_is(_HYPER) && (get_mods() & MOD_MASK_SHIFT)) {
-        set_single_persistent_default_layer(_M_BASE);
-        layer_clear();
-        return false;
+    // HYPER + Shift + M = Miryoku with Colemak-DH, HYPER + Shift + G = Miryoku
+    // with Gallium alphas. Both take effect from the BASE layout only.
+    if (record->event.pressed && layer_state_is(_HYPER) && (get_mods() & MOD_MASK_SHIFT)) {
+        if (keycode == KC_M) {
+            set_single_persistent_default_layer(_M_BASE);
+            layer_clear();
+            return false;
+        }
+        if (keycode == KC_G) {
+            set_single_persistent_default_layer(_M_BASE_GALLIUM);
+            layer_clear();
+            return false;
+        }
     }
     return true;
 }
