@@ -20,8 +20,7 @@
 #define COLS 21
 
 static char     shown[16];
-static bool     drawn;
-static bool     splashing;
+static bool     on_screen;
 static uint32_t splash_until;
 
 static void write_centred(uint8_t line, const char *text) {
@@ -33,8 +32,8 @@ static void write_centred(uint8_t line, const char *text) {
 
 void housekeeping_task_user(void) {
     if (menu_screen != OFF) {
-        // The port is drawing: redo our indicator once it has finished.
-        drawn = false;
+        // The port is drawing: redo our splash once it has finished.
+        on_screen = false;
         return;
     }
 
@@ -46,17 +45,16 @@ void housekeeping_task_user(void) {
         splash_until              = timer_read32() + SPLASH_MS;
     }
 
-    bool now_splashing = !timer_expired32(timer_read32(), splash_until);
-    if (drawn && !changed && now_splashing == splashing) {
+    bool splashing = !timer_expired32(timer_read32(), splash_until);
+    if (!changed && splashing == on_screen) {
         return;
     }
-    splashing = now_splashing;
 
+    // Nothing is drawn outside the splash: a label lit for 5s after every
+    // keypress is exactly how these panels burn in.
     oled_clear();
     if (splashing) {
         write_centred(1, name);
-    } else {
-        write_centred(oled_max_lines() - 1, name);
     }
-    drawn = true;
+    on_screen = splashing;
 }
