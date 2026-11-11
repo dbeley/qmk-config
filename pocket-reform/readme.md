@@ -129,6 +129,16 @@ MO  ◆ ⌥ \ = ␣ ␣  - /  RALT ◆  RCTL
         M3 M1        SCRL M2
 ```
 
-HYPER additionally gives `H/J/K/L` = ← ↓ ↑ →, `↑` = Page Up, `UG_TOGG` on `\`
-and brightness on `=` / `-`. Nothing on any layer drops the keyboard into flash
-mode.
+HYPER, matching MNT's stock function layer where it can:
+
+```
+`  F1..F10  DEL        (HYPER + Backspace = Delete, as in the stock firmware)
+   F11 F12 F13
+   ← ↓ ↑ →  MENU      (arrows replaced the stock H/J/K/L; Enter opens the menu)
+   PGUP RSFT  (↑ position)
+   RGB V+ V- HOME PGDN END
+```
+
+`UG_TOGG` on `\`, brightness on `=` / `-` take the place of the stock
+backslash/equal/minus, which are unchanged on BASE. Nothing on any layer drops
+the keyboard into flash mode.
