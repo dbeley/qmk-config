@@ -72,18 +72,18 @@ into flash mode by accident); in MIRYOKU the menu is on the Fun layer, top-right
 key, or the Num layer, top-right key. Last resort: open the top cover and
 double-press RESET on the OLED board.
 
-The keyboard cannot type once it is in flash mode, so arm the flash first and
-use the countdown to press the menu keys:
+The keyboard cannot type once it is in flash mode, so `flash.sh` arms the flash
+first, caches the sudo password, waits for the RP2040 bootloader to appear (with
+a dot per second and up to 180 s), prints what it detected, then writes the
+firmware with `picotool load -x -v` (reboot after load, verify pass):
 
 ```sh
-nix shell nixpkgs#picotool -c bash -c '
-  sudo -v
-  for i in $(seq 1 120); do picotool info -q >/dev/null 2>&1 && break; sleep 1; done
-  sudo picotool load -x ~/src/qmk_firmware/mntre_pocket_reform_hid_dbeley.uf2'
+cd ~/Documents/qmk-config/pocket-reform
+nix shell nixpkgs#picotool -c bash -c './flash.sh'
 ```
 
-`-x` reboots the keyboard into the new firmware. If the loop times out, the
-keyboard never entered flash mode: power-cycle it and retry.
+It takes an optional path to another `.uf2`. If it times out, the keyboard never
+entered flash mode: power-cycle it and retry.
 
 ## Backlight
 
