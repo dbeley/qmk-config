@@ -101,6 +101,17 @@ Switching: **HYPER + Shift + M** enters MIRYOKU; the bottom-left key (`BACK`)
 returns to BASE. The choice persists across reboots (`QK_CLEAR_EEPROM` lives on
 MIRYOKU's Fun layer). The OLED names the active layout.
 
+MIRYOKU's bottom row (row 5):
+
+```
+physical:   ⌥     \      =     Space  Space    -      /   AltGr
+MIRYOKU:    ·   Esc    Space   Tab    Enter   Bksp   Del     ·
+                Media   Nav    Mouse   Sym     Num    Fun
+```
+
+`BACK` sits on the bottom-left key (the HYPER key's position in BASE); columns
+10-12 of that row, all of column 6-7 in rows 1-3 and the whole 4th row are inert.
+
 BASE:
 
 ```

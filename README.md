@@ -7,6 +7,7 @@ Some config files for the following QMK-compatible devices:
 - sofle: ergonomic split ortho
 - sofle-gamepad: right half of the sofle used for gaming
 - ploopyco/trackball/rev1: trackball (I have the left-handed version)
+- mntre/pocket_reform_hid: MNT Pocket Reform laptop keyboard (QMK port)
 
 ## Install
 
@@ -112,6 +113,37 @@ If it doesn't work, you can also press the BOOT button below the micro-controlle
 ```
 qmk flash -kb cantor -km manna-harbour_miryoku -e MIRYOKU_NAV=VI; qmk flash -kb cantor -km manna-harbour_miryoku -e MIRYOKU_NAV=VI
 ```
+
+### Pocket Reform
+
+The Pocket Reform's RP2040 keyboard/trackball controller uses the community QMK
+port [sleeplessval/qmk-pocket-reform](https://codeberg.org/sleeplessval/qmk-pocket-reform),
+pinned to `75057bb26ff4cdb6744a5c7e0db87a2fc8f8228c`. Nothing in the port is
+modified: this repo supplies `keymaps/dbeley/` only. Setup notes, the layout
+description and the design live in [`pocket-reform/`](pocket-reform/).
+
+The install script clones the port into `keyboards/mntre/pocket_reform_hid` and
+moves the stock MNT keyboards to `keyboards/.disabled-mntre`. RP2040 builds also
+need the `lib/pico-sdk`, `lib/printf`, `lib/chibios`, `lib/chibios-contrib` and
+`lib/lufa` submodules of qmk_firmware.
+
+```
+qmk compile -kb mntre/pocket_reform_hid -km dbeley
+sudo picotool load -x mntre_pocket_reform_hid_dbeley.uf2
+```
+
+Bootloader: the HYPER key plus Enter opens the keyboard menu, `X` flashes; there
+is also `QK_BOOT` on the HYPER layer and inside the Miryoku Fun layer, plus the
+physical RESET button under the top cover.
+
+Two layouts live in the firmware. HYPER + Shift + M switches to Miryoku; the
+bottom-left key (`BACK`) returns. Both are persistent, `QK_CLEAR_EEPROM` on
+Miryoku's Fun layer resets the choice. The OLED names the layout it switched to
+for two seconds.
+
+The backlight colour is pushed by `nixos-mnt-pocket-reform` over QMK's raw HID
+endpoint (`pocket_backlight.c` receives it), replacing the stock firmware's
+`xLRGB`/`xLBRT` reports.
 
 ## Credits
 
