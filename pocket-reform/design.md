@@ -83,7 +83,8 @@ thumb     M3 M1                     SCRL M2          untouched
 
 * **Enter MIRYOKU**: HYPER layer active + `Shift` + `M` — handled in
   `process_record_user()`, then `set_single_persistent_default_layer(M_BASE)`.
-* **Return to BASE**: the `BACK` key in MIRYOKU mode, `DF(BASE)`.
+* **Return to BASE**: the `BACK` key in MIRYOKU mode, `PDF(BASE)` (persistent,
+  unlike `DF()`, which would only live until the next power cycle).
   (Same physical key as the HYPER key in BASE.)
 * The choice persists across reboots (EEPROM), so `QK_CLEAR_EEPROM` matters.
 
