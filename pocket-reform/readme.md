@@ -72,18 +72,25 @@ into flash mode by accident); in MIRYOKU the menu is on the Fun layer, top-right
 key, or the Num layer, top-right key. Last resort: open the top cover and
 double-press RESET on the OLED board.
 
-The keyboard cannot type once it is in flash mode, so `flash.sh` arms the flash
-first, caches the sudo password, waits for the RP2040 bootloader to appear (with
-a dot per second and up to 180 s), prints what it detected, then writes the
-firmware with `picotool load -x -v` (reboot after load, verify pass):
+The keyboard cannot type once it is in flash mode, so arm the flash first and
+use the delay to press the keys. Enter BASE first: the menu selects its entries
+by keycode (`X` flashes, `1`/`0` power, `B` battery), which are different
+physical keys in Colemak-DH.
 
 ```sh
-cd ~/Documents/qmk-config/pocket-reform
-nix shell nixpkgs#picotool -c bash -c './flash.sh'
+nix shell nixpkgs#picotool
+sudo -v                     # authenticate while the keyboard still types
+sleep 60
+sudo picotool load -x -v ~/src/qmk_firmware/mntre_pocket_reform_hid_dbeley.uf2
 ```
 
-It takes an optional path to another `.uf2`. If it times out, the keyboard never
-entered flash mode: power-cycle it and retry.
+Within those 60 s: **HYPER + Enter → `X` → `X`** (or Enter) to confirm. The
+keyboard drops off USB and comes back as `2e8a:0003`; picotool then prints its
+progress, verifies, and `-x` reboots into the new firmware.
+
+If picotool says no BOOTSEL device was found, the keyboard is not in flash mode:
+check with `lsusb -d 2e8a:0003` from another terminal, power-cycle the keyboard
+and rerun the three commands.
 
 ## Backlight
 
