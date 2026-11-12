@@ -217,6 +217,26 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
     '*', '*', '*', '*'
 );
 
+/* ------------------------------------------------------------ key overrides --
+ *
+ * Shift+Backspace = Delete, Alt+Backspace = Ctrl+Backspace (kill word back).
+ * Scoped to the layouts where Backspace is a plain key: on Miryoku's sub layers
+ * a thumb tap of Backspace, with or without a mod, stays what it is.
+ *
+ * Ctrl+Backspace is deliberately left alone: readline and the editors already
+ * treat it as kill-word.
+ */
+#define POCKET_KO_LAYERS ((layer_state_t)((1UL << _BASE) | (1UL << _M_BASE) | (1UL << _M_BASE_GALLIUM)))
+
+const key_override_t delete_override    = ko_make_with_layers(MOD_MASK_SHIFT, KC_BSPC, KC_DEL, POCKET_KO_LAYERS);
+// Left Alt only, so AltGr (RAlt) + Backspace keeps working as a plain Backspace.
+const key_override_t kill_word_override = ko_make_with_layers(MOD_BIT(KC_LALT), KC_BSPC, LCTL(KC_BSPC), POCKET_KO_LAYERS);
+
+const key_override_t *key_overrides[] = {
+    &delete_override,
+    &kill_word_override,
+};
+
 /* ----------------------------------------------------------------- flow tap --
  *
  * QMK's default Flow Tap already skips hotkeys (ctrl/alt/gui held) and only

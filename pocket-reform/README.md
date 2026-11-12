@@ -101,6 +101,20 @@ The hand map is `chordal_hold_layout` in `keymap.c`: columns 1-6 left, 7-12
 right (the same place the six Miryoku thumbs split), the four thumb buttons
 exempt so trackball clicks never join a chord.
 
+## Key overrides
+
+Two, scoped to `_BASE`, `_M_BASE` and `_M_BASE_GALLIUM` (not to the Nav/Num/Sym
+layers, where a Backspace thumb tap stays Backspace):
+
+| press | sends |
+| --- | --- |
+| `Shift + Backspace` | `Delete` |
+| `Alt + Backspace` | `Ctrl + Backspace` (kill word backwards) |
+
+Only *left* Alt triggers the second one, so `AltGr + Backspace` (RAlt) still
+behaves as a plain Backspace. `Ctrl + Backspace` is deliberately untouched:
+readline and the editors already treat it as kill-word.
+
 ## Layout
 
 Switching: **HYPER + Shift + M** enters MIRYOKU with Colemak-DH alphas,
