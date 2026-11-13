@@ -99,7 +99,7 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT( /* Base */
-        KC_BTN2, KC_BTN3, KC_BTN1,
+        MS_BTN2, MS_BTN3, MS_BTN1,
 		LT(1, _______), LT(2, _______)
     ),
     [1] = LAYOUT(
@@ -107,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, DPI_CONFIG
     ),
     [2] = LAYOUT(
-        DRAG_SCROLL, DRAG_SCROLL, KC_BTN3,
+        DRAG_SCROLL, DRAG_SCROLL, MS_BTN3,
         DRAG_SCROLL, _______
     )
 };

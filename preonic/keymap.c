@@ -82,10 +82,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_BEPO] = LAYOUT_preonic_grid(
-        BP_DOLLAR, BP_DQOT, BP_LCBR, BP_RCBR, BP_LPRN, BP_RPRN, BP_PLUS, BP_MINUS, BP_SLASH, BP_ASTR, BP_EQL, BP_PERC,
-        LGUI_T(KC_TAB), BP_B, BP_E_ACUTE, BP_P, BP_O, BP_E_GRAVE, BP_V, BP_D, BP_L, BP_J, BP_Z, BP_W,
-        LCTL_T(KC_ESC), BP_A, BP_U, BP_I, BP_E, BP_COMMA, BP_C, BP_T, BP_S, BP_R, BP_N, BP_M,
-        LSFT_T(KC_ESC), BP_AGRV, BP_Y, BP_X, BP_DOT, BP_K, BP_APOS, BP_Q, BP_G, BP_H, BP_F, RSFT_T(KC_ENT),
+        BP_DLR, BP_DQUO, BP_LCBR, BP_RCBR, BP_LPRN, BP_RPRN, BP_PLUS, BP_MINS, BP_SLSH, BP_ASTR, BP_EQL, BP_PERC,
+        LGUI_T(KC_TAB), BP_B, BP_EACU, BP_P, BP_O, BP_EGRV, BP_V, BP_D, BP_L, BP_J, BP_Z, BP_W,
+        LCTL_T(KC_ESC), BP_A, BP_U, BP_I, BP_E, BP_COMM, BP_C, BP_T, BP_S, BP_R, BP_N, BP_M,
+        LSFT_T(KC_ESC), BP_AGRV, BP_Y, BP_X, BP_DOT, BP_K, BP_QUOT, BP_Q, BP_G, BP_H, BP_F, RSFT_T(KC_ENT),
         KC_LCTL, KC_LGUI, KC_LALT, MO(3), BP_CCED, KC_SPC, KC_SPC, KC_BSPC, MO(4), KC_RALT, KC_RGUI, KC_RCTL),
 /* Default Qwerty Layout (the bottom row has been changed)
  * ,-----------------------------------------------------------------------------------.
@@ -122,8 +122,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT_preonic_grid(
         KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12,
         KC_PSCR, KC_P7, KC_P8, KC_P9, KC_PPLS, KC_PSLS, KC_MINS, KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS, KC_PGUP,
-        KC_SLCK, KC_P4, KC_P5, KC_P6, KC_PMNS, KC_PAST, KC_BTN1, KC_MS_U, KC_BTN2, KC_HOME, KC_DEL, KC_PGDN,
-        KC_PAUS, KC_P1, KC_P2, KC_P3, KC_PEQL, KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_END, KC_UP, KC_TRNS,
+        KC_SCRL, KC_P4, KC_P5, KC_P6, KC_PMNS, KC_PAST, MS_BTN1, MS_UP, MS_BTN2, KC_HOME, KC_DEL, KC_PGDN,
+        KC_PAUS, KC_P1, KC_P2, KC_P3, KC_PEQL, KC_TRNS, MS_LEFT, MS_DOWN, MS_RGHT, KC_END, KC_UP, KC_TRNS,
         KC_SLEP, KC_P0, KC_PDOT, KC_TRNS, KC_MPLY, KC_VOLD, KC_VOLU, KC_AUDIO_MUTE, KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT),
 /* Raise (Same as Lower)
  * ,-----------------------------------------------------------------------------------.
@@ -141,14 +141,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = LAYOUT_preonic_grid(
         KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12,
         KC_PSCR, KC_P7, KC_P8, KC_P9, KC_PPLS, KC_PSLS, KC_MINS, KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS, KC_PGUP,
-        KC_SLCK, KC_P4, KC_P5, KC_P6, KC_PMNS, KC_PAST, KC_BTN1, KC_MS_U, KC_BTN2, KC_HOME, KC_DEL, KC_PGDN,
-        KC_PAUS, KC_P1, KC_P2, KC_P3, KC_PEQL, KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_END, KC_UP, KC_TRNS,
+        KC_SCRL, KC_P4, KC_P5, KC_P6, KC_PMNS, KC_PAST, MS_BTN1, MS_UP, MS_BTN2, KC_HOME, KC_DEL, KC_PGDN,
+        KC_PAUS, KC_P1, KC_P2, KC_P3, KC_PEQL, KC_TRNS, MS_LEFT, MS_DOWN, MS_RGHT, KC_END, KC_UP, KC_TRNS,
         KC_SLEP, KC_P0, KC_PDOT, KC_TRNS, KC_MPLY, KC_VOLD, KC_VOLU, KC_AUDIO_MUTE, KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT),
 /* Adjust (Lower + Raise)
 * ,-----------------------------------------------------------------------------------.
 * |  M1  |  M2  |  M3  |  M4  |  M5  |  M6  |  M7  |  M8  |  M9  |  M10 |  M11 |  M12 |
 * |------+------+------+------+------+------+------+------+------+------+------+------|
-* |      | Reset| Debug|      |      |      |      |TermOn|TerOff|      |      |  Del |
+* |      | Boot | Debug|      |      |      |      |      |      |      |      |  Del |
 * |------+------+------+------+------+-------------+------+------+------+------+------|
 * |      |      |MusMod|Aud on|AudOff|      |      |Qwerty| Bépo |Defaul|      |      |
 * |------+------+------+------+------+------|------+------+------+------+------+------|
@@ -157,15 +157,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 * |      |      |      | MOD  | Back | Brig-  Brig+| Next | MOD  |      |      |      |
 * `-----------------------------------------------------------------------------------'
 */
+/* The two middle keys of row 2 used to be TERM_ON/TERM_OFF; QMK dropped the
+ * terminal feature, so they are KC_NO now. */
 [_ADJUST] = LAYOUT_preonic_grid(
         MUSIC1, MUSIC2, MUSIC3, MUSIC4, MUSIC5, MUSIC6, MUSIC7, MUSIC8, MUSIC9, MUSIC10, MUSIC11, MUSIC12,
-        KC_TRNS, RESET, DEBUG, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, TERM_ON, TERM_OFF, KC_TRNS, KC_TRNS, KC_DEL,
-        KC_TRNS, KC_TRNS, MU_MOD, AU_ON, AU_OFF, KC_TRNS, KC_TRNS, DF(_QWERTY), DF(_BEPO), DF(_DEFAULT), KC_TRNS, KC_TRNS,
+        KC_TRNS, QK_BOOT, DB_TOGG, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_DEL,
+        KC_TRNS, KC_TRNS, MI_MOD, AU_ON, AU_OFF, KC_TRNS, KC_TRNS, DF(_QWERTY), DF(_BEPO), DF(_DEFAULT), KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, CK_TOGG, MU_ON, MU_OFF, MI_ON, MI_OFF, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_WBAK, KC_BRID, KC_BRIU, KC_WFWD, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 };
 
-uint32_t layer_state_set_user(uint32_t state) {
+layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _RAISE, _LOWER, _ADJUST);
 };
 

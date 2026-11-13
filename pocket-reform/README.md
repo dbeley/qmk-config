@@ -18,8 +18,8 @@ Pinned versions (update these notes when bumping):
 
 | Component | Revision |
 | --- | --- |
-| `qmk/qmk_firmware` | `d194c077ed964195ec16d255c7a4b89a794cf03b` (2026-11-08) |
-| `sleeplessval/qmk-pocket-reform` | `75057bb26ff4cdb6744a5c7e0db87a2fc8f8228c` (2026-10-23) |
+| `qmk/qmk_firmware` | `33292390974c75362ca30873c482d052e0bd7a63` (2026-11-12) |
+| `sleeplessval/qmk-pocket-reform` | `b4ca2840fe55b02c7678b2475e096d7d52cbf7f9` (2026-11-12) |
 
 ## One-time setup
 
@@ -32,7 +32,7 @@ nix shell nixpkgs#qmk nixpkgs#gcc-arm-embedded nixpkgs#picotool
 ```sh
 mkdir -p ~/src && cd ~/src
 git clone https://github.com/qmk/qmk_firmware.git
-git -C qmk_firmware checkout d194c077ed964195ec16d255c7a4b89a794cf03b
+git -C qmk_firmware checkout 33292390974c75362ca30873c482d052e0bd7a63
 
 # RP2040 builds need these submodules (shallow clones are fine)
 cd qmk_firmware
@@ -43,7 +43,7 @@ cd ~/src
 # upstream ships keyboards/mntre (the classic Reform keyboard) — move it out of
 # the build tree and install the port in its place
 git clone https://codeberg.org/sleeplessval/qmk-pocket-reform.git
-git -C qmk-pocket-reform checkout 75057bb26ff4cdb6744a5c7e0db87a2fc8f8228c
+git -C qmk-pocket-reform checkout b4ca2840fe55b02c7678b2475e096d7d52cbf7f9
 mkdir -p disabled && mv qmk_firmware/keyboards/mntre disabled/mntre
 mv qmk_firmware/keyboards/mntre_v3 disabled/mntre_v3
 mkdir -p qmk_firmware/keyboards/mntre

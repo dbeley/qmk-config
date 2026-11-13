@@ -39,7 +39,7 @@ enum custom_keycodes {
 	LGUI_T(KC_TAB), KC_Q, KC_W, KC_E, KC_R, KC_T,                           KC_Y,  KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC,        \
 	LCTL_T(KC_ESC), KC_A, KC_S, KC_D, KC_F, KC_G,                           KC_H,  KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT,         \
 	LSFT_T(KC_ESC), KC_Z, KC_X, KC_C, KC_V, KC_B, KC_MUTE,         KC_MUTE, KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ESC), \
-      	  KC_LGUI,  KC_LALT, KC_LCTRL, KC_SPC, KC_LOWER,                     KC_RAISE, KC_SPC, KC_RCTRL, KC_RALT, KC_MIRROR \
+      	  KC_LGUI,  KC_LALT, KC_LCTL, KC_SPC, KC_LOWER,                     KC_RAISE, KC_SPC, KC_RCTL, KC_RALT, KC_MIRROR \
 	),
 	/*
  	 * COLEMAK-DH
@@ -61,7 +61,7 @@ enum custom_keycodes {
 	LGUI_T(KC_TAB), KC_Q, KC_W, KC_F, KC_P, KC_B,                           KC_J,  KC_L,  KC_U,    KC_Y,    KC_SCLN,    KC_BSPC,        \
 	LCTL_T(KC_ESC), KC_A, KC_R, KC_S, KC_T, KC_G,                           KC_M,  KC_N,  KC_E,    KC_I,    KC_O, KC_ENT,         \
 	LSFT_T(KC_ESC), KC_Z, KC_X, KC_C, KC_D, KC_V, KC_MUTE,         KC_MUTE, KC_K,  KC_H,  KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ESC), \
-      	  KC_LGUI,  KC_LALT, KC_LCTRL, KC_SPC, KC_LOWER,                     KC_RAISE, KC_SPC, KC_RCTRL, KC_RALT, KC_RGUI \
+      	  KC_LGUI,  KC_LALT, KC_LCTL, KC_SPC, KC_LOWER,                     KC_RAISE, KC_SPC, KC_RCTL, KC_RALT, KC_RGUI \
 	),
 	/* LOWER
  	 * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -123,8 +123,8 @@ enum custom_keycodes {
 	KC_F1,     KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                        KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12,   \
 	KC_QWERTY,   XXXXXXX, KC_MUTE, KC_MPRV, KC_MNXT, KC_MPLY,                      KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, XXXXXXX, KC_QWERTY,   \
 	KC_COLEMAK,   XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, KC_COLEMAK,   \
-	_______,   XXXXXXX, XXXXXXX, KC_MS_U, KC_BTN1, KC_BTN2, _______,    _______, KC_BTN1, KC_BTN2, KC_MS_U, XXXXXXX, XXXXXXX, _______,   \
-           	   KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, _______,                      _______, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_R \
+	_______,   XXXXXXX, XXXXXXX, MS_UP, MS_BTN1, MS_BTN2, _______,    _______, MS_BTN1, MS_BTN2, MS_UP, XXXXXXX, XXXXXXX, _______,   \
+           	   MS_LEFT, MS_DOWN, MS_RGHT, XXXXXXX, _______,                      _______, XXXXXXX, MS_LEFT, MS_DOWN, MS_RGHT \
 	),
 	/* MIRROR
  	 * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -145,7 +145,7 @@ enum custom_keycodes {
 	KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,                                    KC_TAB,        KC_Q, KC_W, KC_E, KC_R, KC_T, \
 	KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_ENT,                                  LCTL_T(KC_ESC),KC_A, KC_S, KC_D, KC_F, KC_G, \
 	KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, RSFT_T(KC_ESC), _______,   _______, KC_LSFT,       KC_Z, KC_X, KC_C, KC_V, KC_B, \
-      	  KC_QWERTY, KC_LALT, KC_LCTRL, KC_SPC, KC_LOWER,                    KC_RAISE, KC_SPC, KC_RCTRL, KC_RALT, KC_QWERTY \
+      	  KC_QWERTY, KC_LALT, KC_LCTL, KC_SPC, KC_LOWER,                    KC_RAISE, KC_SPC, KC_RCTL, KC_RALT, KC_QWERTY \
 	),
 
 	};
@@ -194,15 +194,15 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     } else if (index == 1) {
         if (clockwise) {
             if (shift_held) {
-                tap_code(KC_WH_R);
+                tap_code(MS_WHLR);
             } else {
-                tap_code(KC_WH_U);
+                tap_code(MS_WHLU);
             }
         } else {
             if (shift_held) {
-                tap_code(KC_WH_L);
+                tap_code(MS_WHLL);
             } else {
-                tap_code(KC_WH_D);
+                tap_code(MS_WHLD);
             }
         }
     }
