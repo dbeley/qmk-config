@@ -65,6 +65,7 @@ pocket_port="https://codeberg.org/sleeplessval/qmk-pocket-reform"
 pocket_pin="b4ca2840fe55b02c7678b2475e096d7d52cbf7f9"
 pocket_tmp="$(mktemp -d)"
 git clone --quiet "$pocket_port" "$pocket_tmp/port"
+git -C "$pocket_tmp/port" fetch --quiet origin "$pocket_pin"
 git -C "$pocket_tmp/port" checkout --quiet "$pocket_pin"
 mkdir -p "$QMK_HOME/.disabled-mntre"
 if [ -f "$QMK_HOME/keyboards/mntre/mntre.c" ]; then
